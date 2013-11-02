@@ -18,6 +18,17 @@ describe "full schema spec" do
   
   def see_full_schema
     assert_schema do |s|
+      s.table :clients do |t|
+        t.column :id, :integer
+        t.column :name, :string
+        t.column :subdomain, :string
+        t.column :cname, :string
+        # Needs Paperclip setup
+        # t.column :logo, :string
+        t.column :created_at, :datetime
+        t.column :updated_at, :datetime
+      end
+
       s.table :admin_users do |t|
         t.column :id, :integer
         t.column :email, :string
