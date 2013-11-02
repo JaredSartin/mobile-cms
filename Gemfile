@@ -4,6 +4,7 @@ gem 'bullet', '4.6.0'
 
 gem 'rails', '4.0.1'
 gem 'mysql2', '0.3.13'
+gem 'therubyracer', :platforms => :ruby
 
 gem 'sass-rails', '4.0.1'
 gem 'uglifier', '2.3.0'
