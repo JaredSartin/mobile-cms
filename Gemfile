@@ -25,6 +25,8 @@ gem 'omniauth', '1.1.4'
 gem 'omniauth-twitter'
 gem 'activeadmin', github: 'gregbell/active_admin'
 
+gem 'i18n', '0.6.5'
+
 group :development do
   gem 'quiet_assets', '1.0.2'
 end
