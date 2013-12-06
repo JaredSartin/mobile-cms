@@ -1,0 +1,11 @@
+!!!
+%html
+  %head
+    %title Mobile CMS
+    = stylesheet_link_tag "application", media: "all"
+    - if user_signed_in?
+      = javascript_include_tag "application"
+      %meta{name: 'current-user-id', content: current_user.id}
+    = csrf_meta_tags
+%body
+  = yield

@@ -1,5 +1,4 @@
-# For more information see: http://emberjs.com/guides/routing/
+App.Router.reopen
+  location: 'history'
 
-MobileCms.Router.map ()->
-  # @resource('posts')
-
+App.Router.map ()->
