@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131206002308) do
+ActiveRecord::Schema.define(version: 20131206005640) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -54,6 +54,9 @@ ActiveRecord::Schema.define(version: 20131206002308) do
     t.datetime "updated_at"
     t.integer  "user_id"
   end
+
+  add_index "clients", ["cname"], name: "index_clients_on_cname", unique: true, using: :btree
+  add_index "clients", ["subdomain"], name: "index_clients_on_subdomain", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

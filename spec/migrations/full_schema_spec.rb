@@ -30,6 +30,8 @@ describe "full schema spec" do
         # client type? page limit? pay flag?
         t.column :created_at, :datetime
         t.column :updated_at, :datetime
+        t.index :subdomain, name: 'index_clients_on_subdomain', unique: true
+        t.index :cname, name: 'index_clients_on_cname', unique: true
       end
 
       #clients_users relation
@@ -40,6 +42,7 @@ describe "full schema spec" do
         t.column :email, :string
         t.column :first_name, :string
         t.column :last_name, :string
+        # INVITABLE!
         t.column :encrypted_password, :string
         t.column :reset_password_token, :string
         t.column :reset_password_sent_at, :datetime
