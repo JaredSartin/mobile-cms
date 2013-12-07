@@ -8,11 +8,14 @@ Bundler.require(:default, Rails.env)
 
 module MobileCms
   class Application < Rails::Application
-    # # Rails-API configuration
+    config.autoload_paths += %W(#{Rails.root}/lib)
+    # Rails-API configuration
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore
     config.middleware.use ActionDispatch::Flash
     config.middleware.use Rack::MethodOverride
+
+    config.assets.paths << Rails.root.join('config', 'locales')
 
     config.assets.precompile += %w( active_admin.js active_admin.css )
     config.generators do |g|
