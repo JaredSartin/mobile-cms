@@ -26,6 +26,7 @@ ActiveAdmin.setup do |config|
   #
   # eg:
   #   config.default_namespace = :hello_world
+  config.default_namespace = :l2s
   #
   # This will create resources in the HelloWorld module and
   # will namespace routes to /hello_world/*
@@ -101,7 +102,7 @@ ActiveAdmin.setup do |config|
   # link. For example :get, :delete, :put, etc..
   #
   # Default:
-  # config.logout_link_method = :get
+  config.logout_link_method = :get
 
 
   # == Root
