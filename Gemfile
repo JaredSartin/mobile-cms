@@ -53,7 +53,6 @@ group :test do
   gem 'birdbath', '1.3.5'
   gem 'capybara', '2.1.0'
   gem 'poltergeist', '1.4.1'
-  gem 'capybara-screenshot', '0.3.14'
   gem 'shoulda-matchers', '2.4.0'
   gem 'database_cleaner', '1.2.0'
   gem 'fire_poll', '1.2.0'
