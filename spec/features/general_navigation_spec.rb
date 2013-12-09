@@ -7,7 +7,9 @@ feature 'General Navigation' do
     page.should have_content "Please log in"
   end
 
-  scenario 'as a logged in account holder I should be able to see the main dashboard'
+  scenario 'as a logged in account holder I should be able to see the main dashboard' do
+  end
+
   scenario 'as a logged in account holder I should be able to see the specific app dashboard'
   scenario 'I should not be able to get to any administration functions if I am not logged in'
 end
