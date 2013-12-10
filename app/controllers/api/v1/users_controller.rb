@@ -1,15 +1,10 @@
 module Api
   module V1
     class UsersController < Api::ApplicationController
+      load_and_authorize_resource :user, find_by: :id
+
       def show
-        if params[:id] =~ /current/
-          if current_user
-            render json: current_user, serializer: UserSerializer
-          else
-            head 401
-          end
-        else
-        end
+        render json: @user, serializer: UserSerializer
       end
     end
   end

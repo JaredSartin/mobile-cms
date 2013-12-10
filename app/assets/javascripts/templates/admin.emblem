@@ -1,6 +1,5 @@
 h2 Admin Panel
-if model
-  if model.isLoaded
-    p Welcome!
+if email
+  p Welcome!
 else
   p Please <a href="/users/sign_in">log in</a>.

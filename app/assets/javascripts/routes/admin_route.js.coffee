@@ -1,2 +1,2 @@
 App.AdminRoute = Ember.Route.extend
-  model: -> @controllerFor('application').get('currentUser')
+  model: -> @get('currentUser')
