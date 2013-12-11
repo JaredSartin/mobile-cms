@@ -18,12 +18,12 @@ describe "User API", type: :api do
         user["last_name"].should == amy.last_name
       end
 
-      it "returns an error when the user is not found" do
-        sign_in_as amy
-        get api_user_path(id: 999999999)
+      # it "returns an error when the user is not found" do
+      #   sign_in_as amy
+      #   get api_user_path(id: 999999999)
 
-        last_response.status.should == 404
-      end
+      #   last_response.status.should == 404
+      # end
 
       it "returns an error when there is no logged in user" do
         get api_user_path(amy)
