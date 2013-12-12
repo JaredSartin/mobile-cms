@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   validates :first_name, :last_name, :email, presence: true
   validates :email, uniqueness: true
 
+  has_many :app
+
   def name
     "#{first_name} #{last_name}"
   end

@@ -3,7 +3,7 @@ module FeatureHelpers
     visit new_user_session_path
     fill_in "Email", with: user.email
     fill_in "Password", with: default_password
-    click_button "Sign In"
+    click_button "Sign in"
   end
 
   def default_password; "password99"; end

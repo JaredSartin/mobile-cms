@@ -18,7 +18,7 @@ describe "full schema spec" do
   
   def see_full_schema
     assert_schema do |s|
-      s.table :clients do |t|
+      s.table :apps do |t|
         t.column :id, :integer
         t.column :user_id, :integer
         t.column :name, :string
@@ -30,8 +30,8 @@ describe "full schema spec" do
         # client type? page limit? pay flag?
         t.column :created_at, :datetime
         t.column :updated_at, :datetime
-        t.index :subdomain, name: 'index_clients_on_subdomain', unique: true
-        t.index :cname, name: 'index_clients_on_cname', unique: true
+        t.index :subdomain, name: 'index_apps_on_subdomain', unique: true
+        t.index :cname, name: 'index_apps_on_cname', unique: true
       end
 
       #clients_users relation

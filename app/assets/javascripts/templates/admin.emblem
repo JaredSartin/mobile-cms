@@ -1,5 +1,5 @@
 h2 Admin Panel
 if email
-  p Welcome!
+  outlet
 else
   p Please <a href="/users/sign_in">log in</a>.

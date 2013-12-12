@@ -4,8 +4,8 @@ App.Router.reopen
 App.Router.map ()->
   @resource('admin', ->
     @route('dashboard', path: '/')
-    @resource('client', path: '/app/:client_id', ->
-      @route('dashboard')
+    @resource('app', path: '/app/:app_id', ->
+      @route('dashboard', path: '/')
       @route('settings')
       @resource('sections', ->
         @route('new')

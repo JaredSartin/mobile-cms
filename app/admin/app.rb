@@ -1,4 +1,4 @@
-ActiveAdmin.register Client do
+ActiveAdmin.register App do
   index do
     column :name
     column :user do
@@ -24,7 +24,7 @@ ActiveAdmin.register Client do
 
   controller do
     def permitted_params
-      params.permit client: [:name, :subdomain, :cname, :user_id]
+      params.permit app: [:name, :subdomain, :cname, :user_id]
     end
   end
 end

@@ -1,0 +1,5 @@
+if apps
+  each apps
+    partial 'app/preview'
+else
+  p You have no applications, you should create one.

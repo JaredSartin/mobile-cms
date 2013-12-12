@@ -1,4 +1,4 @@
-class Client < ActiveRecord::Base
+class App < ActiveRecord::Base
   belongs_to :user
 
   validates :name, :subdomain, :user, presence: true
