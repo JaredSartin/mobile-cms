@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   validates :first_name, :last_name, :email, presence: true
   validates :email, uniqueness: true
 
-  has_many :app
+  has_many :apps
 
   def name
     "#{first_name} #{last_name}"

@@ -5,7 +5,7 @@ module Api
 
       def links
         {
-          apps: 'URL HERE'
+          apps: apps_api_user_path(object)
         }
       end
     end
