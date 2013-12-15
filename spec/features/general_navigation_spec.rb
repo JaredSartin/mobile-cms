@@ -25,6 +25,17 @@ feature 'General Navigation' do
     page.should have_selector 'a', text: 'Chadron State'
   end
 
-  scenario 'as a logged in account holder I should be able to see the specific app dashboard'
+  scenario 'as a logged in account holder I should be able to see the specific app dashboard' do
+    Fabricate(:app, user: amy, name: "Hope")
+
+    sign_in_as amy
+    visit '/admin'
+    
+    page.find('a', text: 'Hope').click
+
+    page.should have_content "Manage Hope"
+  end
+
+  scenario 'I should be automatically directed to the proper app if loging into one'
   scenario 'I should not be able to get to any administration functions if I am not logged in'
 end
