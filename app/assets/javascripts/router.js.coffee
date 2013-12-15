@@ -7,10 +7,10 @@ App.Router.map ()->
     @resource('app', path: '/app/:app_id', ->
       @route('dashboard', path: '/')
       @route('settings')
-      @resource('sections', ->
+      @resource('pages', ->
         @route('new')
       )
-      @resource('section', path: '/section/:section_id', ->
+      @resource('page', path: '/page/:page_id', ->
         @route('show', path: '/')
         @route('edit')
       )
