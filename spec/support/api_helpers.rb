@@ -10,7 +10,6 @@ module ApiHelpers
   end
 
   def get_json_object(root)
-    
     obj = JSON.parse(last_response.body)
     target = obj[root]
     if !target

@@ -12,6 +12,9 @@ describe Api::V1::AppSerializer do
                                   name: app.name,
                                   cname: app.cname,
                                   subdomain: app.subdomain,
+                                  links: {
+                                    pages: "/api/apps/#{app.id}/pages"
+                                  }
                                 }}
     end
   end

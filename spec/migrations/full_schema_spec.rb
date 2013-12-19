@@ -34,6 +34,19 @@ describe "full schema spec" do
         t.index :cname, name: 'index_apps_on_cname', unique: true
       end
 
+      s.table :pages do |t|
+        t.column :id, :integer
+        t.column :app_id, :integer
+        t.column :page_id, :integer
+        t.column :order, :integer
+        t.column :title, :string
+        t.column :content, :text
+        t.column :created_at, :datetime
+        t.column :updated_at, :datetime
+        t.index :app_id, name: 'index_pages_on_app_id'
+        t.index :page_id, name: 'index_pages_on_page_id'
+      end
+
       #clients_users relation
       #pages (belong to client AND parent AND has children)
 
