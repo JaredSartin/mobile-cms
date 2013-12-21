@@ -32,6 +32,7 @@ feature 'Page Management' do
     page.should have_selector ".app-add-page"
   end
 
+  scenario 'page creation can show errors'
   scenario 'pages can be edited'
   scenario 'pages can be deleted'
   scenario 'pages can be rearanged'

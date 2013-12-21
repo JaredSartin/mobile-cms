@@ -17,6 +17,8 @@ MobileCms::Application.routes.draw do
           get :pages
         end
       end
+
+      resources :pages
     end
   end
 

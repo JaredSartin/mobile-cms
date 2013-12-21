@@ -4,4 +4,4 @@ App.Page = DS.Model.extend
   children: DS.hasMany 'page', async: true, inverse: 'parent'
   order: DS.attr 'number'
   title: DS.attr 'string'
-  content: DS.attr 'string'
+  body: DS.attr 'string'

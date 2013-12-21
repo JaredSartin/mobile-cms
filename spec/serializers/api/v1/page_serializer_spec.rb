@@ -10,7 +10,7 @@ describe Api::V1::PageSerializer do
                                   id: page.id,
                                   app_id: page.app_id,
                                   title: page.title,
-                                  content: page.content,
+                                  body: page.body,
                                   order: page.order,
                                 }}
     end

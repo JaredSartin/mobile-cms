@@ -40,7 +40,7 @@ describe "full schema spec" do
         t.column :page_id, :integer
         t.column :order, :integer
         t.column :title, :string
-        t.column :content, :text
+        t.column :body, :text
         t.column :created_at, :datetime
         t.column :updated_at, :datetime
         t.index :app_id, name: 'index_pages_on_app_id'

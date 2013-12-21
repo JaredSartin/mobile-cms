@@ -35,13 +35,13 @@ describe "App API", type: :api do
       got1["id"].should == page1.id
       got1["app_id"].should == page1.app_id
       got1["title"].should == page1.title
-      got1["content"].should == page1.content
+      got1["body"].should == page1.body
       got1["order"].should == page1.order
 
       got2["id"].should == page2.id
       got2["app_id"].should == page2.app_id
       got2["title"].should == page2.title
-      got2["content"].should == page2.content
+      got2["body"].should == page2.body
       got2["order"].should == page2.order
     end
   end
