@@ -1,2 +1,3 @@
+linkTo 'pages.new' class='app-add-page btn btn-default' | Add New Page
 each pages
   p=title

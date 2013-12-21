@@ -14,5 +14,8 @@ App.Router.map ()->
         @route('show', path: '/')
         @route('edit')
       )
+      @resource('pages', ->
+        @route('new')
+      )
     )
   )
