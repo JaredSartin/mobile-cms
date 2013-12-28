@@ -1,2 +1,2 @@
-h2 Add New Page
+h2 Edit Page
 partial 'page/form'

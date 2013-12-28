@@ -32,8 +32,24 @@ feature 'Page Management' do
     page.should have_selector ".app-add-page"
   end
 
+  scenario 'pages can be edited' do
+    hope = Fabricate(:app, user: amy, name: "Hope")
+    Fabricate(:page, app_id: hope.id, title: "Not Dis Won")
+
+    sign_in_as amy
+    visit_admin_app(hope)
+
+    page.should have_content "Not Dis Won"
+    page.find('.app-edit-page').click
+
+    fill_in "Title", with: "Dis is da won!"
+    page.first('.app-save').click
+
+    page.should_not have_content "Not Dis Won"
+    page.should have_content "Dis is da won!"
+  end
+
   scenario 'page creation can show errors'
-  scenario 'pages can be edited'
   scenario 'pages can be deleted'
   scenario 'pages can be rearanged'
   scenario 'pages can be nested'

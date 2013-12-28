@@ -1,3 +1,6 @@
 linkTo 'pages.new' class='app-add-page btn btn-default' | Add New Page
-each pages
-  p=title
+ul
+  each pages
+    li
+      span=title
+      linkTo 'page.edit' this class="app-edit-page" | Edit

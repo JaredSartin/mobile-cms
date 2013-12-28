@@ -1,0 +1,9 @@
+form role="form"
+  App.FormGroup
+    label.control-label for="page-title" Title
+    Ember.TextField valueBinding="title" id="page-title" class="form-control"
+  App.FormGroup
+    label.control-label for="page-body" Content
+    Ember.TextArea valueBinding="body" id="page-body" class="form-control"
+  App.FormGroup 
+    button.btn.btn-info.app-save{action save this} Save

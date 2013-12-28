@@ -1,9 +1,21 @@
 module Api
   module V1
     class PagesController < Api::ApplicationController
+      load_resource :page
+
+      def show
+        render json: @page, serializer: PageSerializer
+      end
+
       def create
         @page = Page.new(page_params)
         if @page.save
+          render json: @page, serializer: PageSerializer
+        end
+      end
+
+      def update
+        if @page.update_attributes(page_params)
           render json: @page, serializer: PageSerializer
         end
       end

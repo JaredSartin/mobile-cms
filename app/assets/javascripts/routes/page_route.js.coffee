@@ -9,3 +9,9 @@ App.PagesNewRoute = Ember.Route.extend
         @modelFor('app').get('pages').pushObject(page)
         @controller.transitionToRoute 'app.dashboard', @modelFor('app')
 
+App.PageEditRoute = Ember.Route.extend
+  model: -> @modelFor('page')
+  actions:
+    save: (page) ->
+      page.save().then =>
+        @controller.transitionToRoute 'app.dashboard', @modelFor('app')
