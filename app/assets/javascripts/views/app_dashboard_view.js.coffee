@@ -22,4 +22,11 @@ App.AppDashboardView = Ember.View.extend
   ).observes('controller.pages.@each')
 
   _getPages: (sel) ->
+    #thinks sel is not a sortable?
+    @$(sel).sortable(
+      connectWith: '.app-pages'
+      placeholder: 'page-drag-placeholder'
+      dropOnEmpty: true
+    )
+    #######
     @$(sel).sortable('toArray', attribute: 'data-id').filter (a) -> a

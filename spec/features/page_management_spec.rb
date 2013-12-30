@@ -76,7 +76,6 @@ feature 'Page Management' do
 
       page.should have_selector(".app-homepage .app-page-#{page2.id}")
       page.should have_selector(".app-unassigned-pages .app-page-#{page1.id}")
-      pending "impl filtering!"
       page.should_not have_selector(".app-unassigned-pages .app-page-#{page2.id}")
 
       page1_target.drag_to(home_page_target)
