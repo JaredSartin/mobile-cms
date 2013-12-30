@@ -5,9 +5,23 @@ describe "Page API", type: :api do
   let(:page_model) {Fabricate(:page, app_id: app_model.id)}
 
   context "v1" do
+    describe "indexing pages" do
+      it "returns searched pages" do
+        get api_pages_path, {id: page_model.id}
+
+        page_json = get_json_object("page")
+        page_json["id"].should == page_model.id
+        page_json["title"].should == page_model.title
+        page_json["body"].should == page_model.body
+        page_json["app_id"].should == page_model.app_id
+        page_json["order"].should == page_model.order
+      end
+
+      it "returns error when page not found"
+      it "returns index of pages?"
+    end
+
     it "shows pages" do
-      sign_in_as amy
-      
       get api_page_path(page_model)
 
       last_response.status.should == 200

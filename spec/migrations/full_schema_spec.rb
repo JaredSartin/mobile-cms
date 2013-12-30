@@ -21,6 +21,7 @@ describe "full schema spec" do
       s.table :apps do |t|
         t.column :id, :integer
         t.column :user_id, :integer
+        t.column :homepage_id, :integer
         t.column :name, :string
         t.column :subdomain, :string
         t.column :cname, :string

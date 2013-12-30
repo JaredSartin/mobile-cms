@@ -3,6 +3,13 @@ module Api
     class PagesController < Api::ApplicationController
       load_resource :page
 
+      def index
+        if params["id"]
+          @page = Page.find(params["id"])
+          render json: @page, serializer: PageSerializer
+        end
+      end
+
       def show
         render json: @page, serializer: PageSerializer
       end

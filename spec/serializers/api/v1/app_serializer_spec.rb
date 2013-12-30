@@ -9,6 +9,7 @@ describe Api::V1::AppSerializer do
       subject.as_json.should == {app: {
                                   id: app.id,
                                   user_id: app.user_id,
+                                  homepage_id: app.homepage_id,
                                   name: app.name,
                                   cname: app.cname,
                                   subdomain: app.subdomain,

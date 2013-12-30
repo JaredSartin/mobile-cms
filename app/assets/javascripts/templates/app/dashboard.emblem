@@ -1,6 +1,8 @@
 linkTo 'pages.new' class='app-add-page btn btn-default' | Add New Page
-ul
-  each pages
-    li
-      span=title
-      linkTo 'page.edit' this class="app-edit-page" | Edit
+ul.app-homepage.app-pages.page-list
+  if homepage
+    with homepage
+      partial 'page/dashboard_list'
+ul.app-unassigned-pages.app-pages.page-list
+  each unassignedPages
+    partial 'page/dashboard_list'

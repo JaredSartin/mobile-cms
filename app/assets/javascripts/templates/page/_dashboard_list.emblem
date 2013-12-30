@@ -1,0 +1,4 @@
+li class="app-page-{{unbound id}} app-page" data-id="{{unbound id}}"
+  span=title
+  linkTo 'page.edit' this class="app-edit-page" | Edit
+  ul.app-child-pages.app-pages.page-list class="app-page-{{unbound id}}-children"

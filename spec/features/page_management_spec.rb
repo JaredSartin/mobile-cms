@@ -49,10 +49,53 @@ feature 'Page Management' do
     page.should have_content "Dis is da won!"
   end
 
+  context 'managing page structure' do
+    let(:hope) {Fabricate(:app, user: amy, name: "Hope")}
+    let!(:page1) {Fabricate(:page, app_id: hope.id, title: "Furst")}
+    let!(:page2) {Fabricate(:page, app_id: hope.id, title: "Sekond")}
+    let!(:page3) {Fabricate(:page, app_id: hope.id, title: "Thurd")}
+
+    before do
+      sign_in_as amy
+      visit_admin_app(hope)
+    end
+
+    scenario 'a page can be set as the default' do
+      page1_target = page.find(".app-page-#{page1.id}")
+      page2_target = page.find(".app-page-#{page2.id}")
+      home_page_target = page.find(".app-homepage")
+
+      page2_target.drag_to(home_page_target)
+      sleep 1 #TODO - Put in flash message on save
+      page.should have_selector(".app-homepage .app-page-#{page2.id}")
+
+      #check and replace
+      visit_admin_app(hope)
+      page1_target = page.find(".app-page-#{page1.id}")
+      home_page_target = page.find(".app-homepage")
+
+      page.should have_selector(".app-homepage .app-page-#{page2.id}")
+      page.should have_selector(".app-unassigned-pages .app-page-#{page1.id}")
+      pending "impl filtering!"
+      page.should_not have_selector(".app-unassigned-pages .app-page-#{page2.id}")
+
+      page1_target.drag_to(home_page_target)
+      sleep 1 #TODO - Put in flash message on save
+
+      #final check
+      visit_admin_app(hope)
+      page.should have_selector(".app-homepage .app-page-#{page1.id}")
+      page.should have_selector(".app-unassigned-pages .app-page-#{page2.id}")
+      page.should_not have_selector(".app-homepage .app-page-#{page2.id}")
+      page.should_not have_selector(".app-unassigned-pages .app-page-#{page1.id}")
+    end
+
+    scenario 'pages can be rearanged'
+
+    scenario 'pages can be nested'
+  end
+
   scenario 'page creation can show errors'
   scenario 'pages can be deleted'
-  scenario 'pages can be rearanged'
-  scenario 'pages can be nested'
-  scenario 'a page can be set as the default'
   scenario 'images can be uploaded to pages'
 end

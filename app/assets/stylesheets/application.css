@@ -11,3 +11,15 @@
  *= require_self
  *= require_tree .
  */
+
+.page-drag-placeholder {
+  background: pink;
+  display: inline-block;
+  width: 100px;
+  height: 15px;
+}
+
+.page-list {
+  border: 1px solid red;
+  padding: 5px;
+}

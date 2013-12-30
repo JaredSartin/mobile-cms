@@ -15,6 +15,7 @@ describe "App API", type: :api do
       app["name"].should == app_model.name
       app["cname"].should == app_model.cname
       app["subdomain"].should == app_model.subdomain
+      # app["homepage_id"].should == app_model.homepage_id
     end
 
     it "gives the apps' pages" do
@@ -43,6 +44,32 @@ describe "App API", type: :api do
       got2["title"].should == page2.title
       got2["body"].should == page2.body
       got2["order"].should == page2.order
+    end
+
+    describe "updating the app" do
+      it "returns the updated app" do
+        sign_in_as amy
+
+        put api_app_path(app_model), {app: {name: 'Foober', cname: 'bar.baz', subdomain: 'zork', homepage_id: 99}}
+
+        last_response.status.should == 200
+
+        app = get_json_object("app")
+        app["id"].should == app_model.id
+        app["name"].should == "Foober"
+        app["cname"].should == "bar.baz"
+        app["subdomain"].should == "zork"
+        app["homepage_id"].should == 99
+      end
+
+      it "returns errors on the app"
+      it "returns errors if you cannot update the app"
+    end
+
+    describe "creating the app" do
+      it "returns the new app"
+      it "returns errors on the app"
+      it "returns errors if you cannot create an app"
     end
   end
 end
