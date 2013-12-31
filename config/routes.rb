@@ -18,7 +18,11 @@ MobileCms::Application.routes.draw do
         end
       end
 
-      resources :pages
+      resources :pages do
+        member do
+          get :children
+        end
+      end
     end
   end
 

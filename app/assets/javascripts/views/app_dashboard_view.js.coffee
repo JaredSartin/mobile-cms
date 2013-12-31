@@ -4,7 +4,7 @@ App.AppDashboardView = Ember.View.extend
     @setSortable()
 
   setSortable: (->
-    Ember.run.scheduleOnce 'afterRender', @, =>
+    Ember.run.debounce @, =>
       controller = @get('controller')
       @$('.app-homepage, .app-unassigned-pages, .app-child-pages').sortable(
         connectWith: '.app-pages'
@@ -19,6 +19,7 @@ App.AppDashboardView = Ember.View.extend
             indexes[parentId] = @_getPages($pageList)
           controller.changePageOrder ui.item.data('id'), indexes
       )
+    , 1
   ).observes('controller.pages.@each')
 
   _getPages: (sel) ->

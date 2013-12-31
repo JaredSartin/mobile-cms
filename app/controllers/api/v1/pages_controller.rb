@@ -27,9 +27,13 @@ module Api
         end
       end
 
+      def children
+        render json: @page.children, each_serializer: PageSerializer
+      end
+
       private
       def page_params
-        params.require(:page).permit(:title, :body, :app_id, :order, :page_id)
+        params.require(:page).permit(:title, :body, :app_id, :order, :page_id, :parent_id)
       end
     end
   end

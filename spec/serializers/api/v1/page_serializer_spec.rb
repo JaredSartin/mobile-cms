@@ -12,6 +12,10 @@ describe Api::V1::PageSerializer do
                                   title: page.title,
                                   body: page.body,
                                   order: page.order,
+                                  page_id: page.page_id,
+                                  links: {
+                                    children: "/api/pages/#{page.id}/children", 
+                                  },
                                 }}
     end
   end

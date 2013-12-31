@@ -89,11 +89,28 @@ feature 'Page Management' do
       page.should_not have_selector(".app-unassigned-pages .app-page-#{page1.id}")
     end
 
-    scenario 'pages can be rearanged'
+    scenario 'pages can be nested' do
+      hope.homepage = page3
+      hope.save
 
-    scenario 'pages can be nested'
+      visit_admin_app(hope)
+      page1_target = page.find(".app-page-#{page1.id}")
+      page3_child_target = page.find(".app-page-#{page3.id} .app-child-pages")
+      page1_target.drag_to(page3_child_target)
+      sleep 1
+      
+      page.should have_selector(".app-page-#{page3.id} .app-child-pages .app-page-#{page1.id}")
+
+      visit_admin_app(hope)
+      page.should have_selector(".app-page-#{page3.id} .app-child-pages .app-page-#{page1.id}")
+
+      pending "Remove dupes!"
+      pending "REMOVAL"
+      raise "now remove one!"
+    end
   end
 
+  scenario 'pages can be rearranged'
   scenario 'page creation can show errors'
   scenario 'pages can be deleted'
   scenario 'images can be uploaded to pages'
