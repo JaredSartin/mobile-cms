@@ -30,5 +30,5 @@ App.AppDashboardController = Ember.ObjectController.extend
 
   unassignedPages: (->
     @store.filter 'page', (p) =>
-      p.get("id") != @get('homepage.id')
+      (p.get("id") != @get('homepage.id')) and (!p.get('parent'))
   ).property('pages', 'homepage.id')
