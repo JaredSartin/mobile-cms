@@ -83,10 +83,13 @@ feature 'Page Management' do
 
       #final check
       visit_admin_app(hope)
-      page.should have_selector(".app-homepage .app-page-#{page1.id}")
-      page.should have_selector(".app-unassigned-pages .app-page-#{page2.id}")
-      page.should_not have_selector(".app-homepage .app-page-#{page2.id}")
-      page.should_not have_selector(".app-unassigned-pages .app-page-#{page1.id}")
+      save_screenshot 'tmp/page.png'
+      patiently do
+        page.should have_selector(".app-homepage .app-page-#{page1.id}")
+        page.should have_selector(".app-unassigned-pages .app-page-#{page2.id}")
+        page.should_not have_selector(".app-homepage .app-page-#{page2.id}")
+        page.should_not have_selector(".app-unassigned-pages .app-page-#{page1.id}")
+      end
     end
 
     scenario 'pages can be nested' do
@@ -96,15 +99,18 @@ feature 'Page Management' do
       visit_admin_app(hope)
       page1_target = page.find(".app-page-#{page1.id}")
       page3_child_target = page.find(".app-page-#{page3.id} .app-child-pages")
+
       page1_target.drag_to(page3_child_target)
+      patiently do
+        page.should have_selector(".app-page-#{page3.id} .app-child-pages .app-page-#{page1.id}")
+      end
       sleep 1
-      
-      page.should have_selector(".app-page-#{page3.id} .app-child-pages .app-page-#{page1.id}")
 
       visit_admin_app(hope)
-      page.should have_selector(".app-page-#{page3.id} .app-child-pages .app-page-#{page1.id}")
+      patiently do
+        page.should have_selector(".app-page-#{page3.id} .app-child-pages .app-page-#{page1.id}")
+      end
 
-      pending "Remove dupes!"
       pending "REMOVAL"
       raise "now remove one!"
     end

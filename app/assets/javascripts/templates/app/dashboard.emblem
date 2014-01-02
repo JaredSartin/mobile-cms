@@ -5,4 +5,5 @@ ul.app-homepage.app-pages.page-list
       partial 'page/dashboard_list'
 ul.app-unassigned-pages.app-pages.page-list
   each unassignedPages
-    partial 'page/dashboard_list'
+    unless parent
+      partial 'page/dashboard_list'

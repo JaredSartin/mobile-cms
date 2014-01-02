@@ -7,11 +7,11 @@ App.AppDashboardController = Ember.ObjectController.extend
         app.set('homepage', p)
         app.save()
     delete indexes.homepage
-    for page_id, children of indexes
-      @_updateChildren(page_id, children)
+    for pageId, children of indexes
+      @_updateChildren(pageId, children)
 
-  _updateChildren: (page_id, children) ->
-    @store.find('page', page_id).then (p) =>
+  _updateChildren: (pageId, children) ->
+    @store.find('page', pageId).then (p) =>
       hasIds = p.get('children').getEach('id')
       newChildren = children.reject((id) -> id in hasIds)
       staleChildren = hasIds.reject((id) -> id in children)
@@ -29,6 +29,7 @@ App.AppDashboardController = Ember.ObjectController.extend
     console.log "REMOVE CHILDREN"
 
   unassignedPages: (->
-    @store.filter 'page', (p) =>
-      (p.get("id") != @get('homepage.id')) and (!p.get('parent'))
-  ).property('pages', 'homepage.id')
+    hid = @get('homepage.id')
+    @get('pages').toArray().reject (p) =>
+      p.get('id') == hid
+  ).property('pages.@each', 'homepage.id')

@@ -19,12 +19,12 @@ App.AppDashboardView = Ember.View.extend
             indexes[parentId] = @_getPages($pageList)
           controller.changePageOrder ui.item.data('id'), indexes
       )
-    , 1
+    , 30
   ).observes('controller.pages.@each')
 
   _getPages: (sel) ->
     #thinks sel is not a sortable?
-    @$(sel).sortable(
+    @$('.app-homepage, .app-unassigned-pages, .app-child-pages').sortable(
       connectWith: '.app-pages'
       placeholder: 'page-drag-placeholder'
       dropOnEmpty: true
