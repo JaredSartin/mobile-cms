@@ -10,6 +10,10 @@ module FeatureHelpers
     click_button "Sign in"
   end
 
+  def accept_confirmations(accept)
+    page.evaluate_script "window.confirm = function(msg) { return #{!!accept}; }"
+  end
+
   def default_password; "password99"; end
 end
 

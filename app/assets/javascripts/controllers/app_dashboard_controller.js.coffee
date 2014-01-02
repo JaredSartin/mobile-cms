@@ -2,31 +2,37 @@ App.AppDashboardController = Ember.ObjectController.extend
   changePageOrder: (changedId, indexes) ->
     cids = "#{changedId}"
     app = @get 'model'
+    unassigned = indexes.unassigned
     if cids in indexes.homepage
       @store.find('page', cids).then (p) ->
         app.set('homepage', p)
         app.save()
     delete indexes.homepage
+    delete indexes.unassigned
+    @_removeFromChildren(unassigned)
     for pageId, children of indexes
       @_updateChildren(pageId, children)
 
   _updateChildren: (pageId, children) ->
     @store.find('page', pageId).then (p) =>
       hasIds = p.get('children').getEach('id')
-      newChildren = children.reject((id) -> id in hasIds)
-      staleChildren = hasIds.reject((id) -> id in children)
-      @_removeChildren(p, staleChildren) if staleChildren.length > 0
-      @_addChildren(p, newChildren) if newChildren.length > 0
 
-  _addChildren: (page, newChildrenIds) ->
+      # Only want the ones that are not in the pages children
+      newChildren = children.reject((id) -> id in hasIds)
+
+      @_addToChildren(p, newChildren) if newChildren.length > 0
+
+  _addToChildren: (page, newChildrenIds) ->
     for newChildId in newChildrenIds
       @store.find('page', newChildId).then (child) =>
-        page.get('children').then (p) ->
-          p.pushObject(child)
-          p.save()
+        child.set('parent', page)
+        child.save()
 
-  _removeChildren: (page, staleChildrenIds) ->
-    console.log "REMOVE CHILDREN"
+  _removeFromChildren: (staleChildrenIds) ->
+    for staleChildId in staleChildrenIds
+      @store.find('page', staleChildId).then (child) =>
+        child.set('parent', undefined)
+        child.save()
 
   unassignedPages: (->
     hid = @get('homepage.id')

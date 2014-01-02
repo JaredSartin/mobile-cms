@@ -1,5 +1,5 @@
 // Fetched from: http://builds.emberjs.com/canary/ember.js
-// Fetched on: 2014-01-01T22:15:00Z
+// Fetched on: 2014-01-02T03:57:42Z
 /*!
  * @overview  Ember - JavaScript Application Framework
  * @copyright Copyright 2011-2014 Tilde Inc. and contributors
@@ -7,7 +7,7 @@
  *            Portions Copyright 2008-2011 Apple Inc. All rights reserved.
  * @license   Licensed under MIT license
  *            See https://raw.github.com/emberjs/ember.js/master/LICENSE
- * @version   1.4.0-beta.1+canary.e138921c
+ * @version   1.4.0-beta.1+canary.59d93b5a
  */
 
 
@@ -200,7 +200,7 @@ if (!Ember.testing) {
  *            Portions Copyright 2008-2011 Apple Inc. All rights reserved.
  * @license   Licensed under MIT license
  *            See https://raw.github.com/emberjs/ember.js/master/LICENSE
- * @version   1.4.0-beta.1+canary.e138921c
+ * @version   1.4.0-beta.1+canary.59d93b5a
  */
 
 
@@ -283,7 +283,7 @@ var define, requireModule, require, requirejs;
 
   @class Ember
   @static
-  @version 1.4.0-beta.1+canary.e138921c
+  @version 1.4.0-beta.1+canary.59d93b5a
 */
 
 if ('undefined' === typeof Ember) {
@@ -310,10 +310,10 @@ Ember.toString = function() { return "Ember"; };
 /**
   @property VERSION
   @type String
-  @default '1.4.0-beta.1+canary.e138921c'
+  @default '1.4.0-beta.1+canary.59d93b5a'
   @static
 */
-Ember.VERSION = '1.4.0-beta.1+canary.e138921c';
+Ember.VERSION = '1.4.0-beta.1+canary.59d93b5a';
 
 /**
   Standard environmental variables. You can define these in a global `EmberENV`
@@ -17502,12 +17502,18 @@ Ember.PromiseProxyMixin = Ember.Mixin.create({
     }
   }),
 
-  then: function(fulfill, reject, label) {
-    return get(this, 'promise').then(fulfill, reject, label);
-  }
+  then: promiseAlias('then'),
+  'catch': promiseAlias('catch'),
+  'finally': promiseAlias('finally')
+
 });
 
-
+function promiseAlias(name) {
+  return function () {
+    var promise = get(this, 'promise');
+    return promise[name].apply(promise, arguments);
+  };
+}
 
 })();
 

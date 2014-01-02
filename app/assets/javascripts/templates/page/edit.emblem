@@ -1,2 +1,3 @@
 h2 Edit Page
+a.app-delete-page{action delete this} href='#' Delete
 partial 'page/form'

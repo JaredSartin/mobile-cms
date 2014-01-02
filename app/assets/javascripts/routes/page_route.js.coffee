@@ -15,3 +15,11 @@ App.PageEditRoute = Ember.Route.extend
     save: (page) ->
       page.save().then =>
         @controller.transitionToRoute 'app.dashboard', @modelFor('app')
+    delete: (page) ->
+      if confirm("Are you sure you want to delete this page?")
+        appModel = @modelFor('app')
+        appModel.get('pages').then (p) =>
+          p.removeObject page
+          page.deleteRecord()
+          page.save().then =>
+            @controller.transitionToRoute 'app.dashboard', appModel

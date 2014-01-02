@@ -27,6 +27,12 @@ module Api
         end
       end
 
+      def destroy
+        if @page.destroy
+          head 204
+        end
+      end
+
       def children
         render json: @page.children, each_serializer: PageSerializer
       end

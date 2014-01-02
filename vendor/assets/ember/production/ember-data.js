@@ -1,5 +1,5 @@
 // Fetched from: http://builds.emberjs.com/canary/ember-data.min.js
-// Fetched on: 2014-01-01T22:15:07Z
+// Fetched on: 2014-01-02T03:57:49Z
 /*!
  * @overview  Ember Data
  * @copyright Copyright 2011-2014 Tilde Inc. and contributors.

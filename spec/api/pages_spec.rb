@@ -112,8 +112,22 @@ describe "Page API", type: :api do
         page_json["order"].should == 10
       end
 
+      it "returns not found"
       it "returns the page errors"
       it "returns errors if the user can't edit the page"
+    end
+
+    context "deleting pages" do
+      it "deletes the page" do
+        sign_in_as amy
+
+        delete api_page_path(page_model)
+
+        last_response.status.should == 204
+      end
+
+      it "returns not found"
+      it "returns errors if the user can't delete the page"
     end
   end
 end
