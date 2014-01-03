@@ -3,21 +3,23 @@ source 'https://rubygems.org'
 # Core
 gem 'rails', '4.0.2'
 gem 'mysql2', '0.3.13'
-gem 'therubyracer', :platforms => :ruby
+
+# Front end client
+gem 'ember-rails', '0.14.1'
+gem 'ember-source', '1.1.2'
+gem 'emblem-rails', '0.2.0'
+
+gem 'therubyracer', '0.12.0'
+gem "less-rails", "2.4.2"
+gem "less-rails-bootstrap", "3.0.6"
 
 # Assets
-gem 'sass-rails', '4.0.1'
 gem 'uglifier', '2.3.0'
 gem 'coffee-rails', '4.0.1'
 gem 'jquery-rails', '3.0.4'
 gem 'jquery-ui-rails', '4.1.1'
 gem 'haml-rails', '0.4.0'
 gem 'haml', '4.0.3'
-
-# Front end client
-gem 'ember-rails', '0.14.0'
-gem 'ember-source', '1.1.2'
-gem 'emblem-rails', '0.2.0'
 
 # API
 gem 'active_model_serializers', '0.8.1'
