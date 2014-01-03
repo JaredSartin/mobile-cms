@@ -3,7 +3,7 @@ require 'spec_helper'
 feature 'General Navigation' do
   scenario 'as an account holder I should see a login page when I go to /admin' do
     visit '/admin'
-    page.should have_content "Admin Panel"
+    page.should have_content "Publicizr"
     page.should have_content "Please log in"
   end
 
@@ -14,7 +14,7 @@ feature 'General Navigation' do
     sign_in_as amy
     visit '/admin'
 
-    page.should have_content "Admin Panel"
+    page.should have_content "Publicizr"
     page.should have_content "You have no applications, you should create one."
   end
 
