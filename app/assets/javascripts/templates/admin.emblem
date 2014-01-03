@@ -1,5 +1,10 @@
-h2 Admin Panel
-if email
-  outlet
-else
-  p Please <a href="/users/sign_in">log in</a>.
+nav.navbar.navbar-fixed-top.navbar-inverse
+  .navbar-header
+    a.navbar-brand
+      | Announcr
+      span.small (Beta)
+.container
+  if email
+    outlet
+  else
+    p Please <a href="/users/sign_in">log in</a>.

@@ -1,6 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.sortable
+//= require twitter/bootstrap
 //= require pace.min
 //= require handlebars
 //= require ember
