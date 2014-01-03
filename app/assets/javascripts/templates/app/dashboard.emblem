@@ -1,4 +1,5 @@
 linkTo 'pages.new' class='app-add-page btn btn-default' | Add New Page
+linkTo 'app.settings' this class='app-edit-app btn btn-default pull-right' | Edit App
 ul.app-homepage.app-pages.page-list
   if homepage
     with homepage

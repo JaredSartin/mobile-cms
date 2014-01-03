@@ -7,6 +7,9 @@ feature 'General Navigation' do
     page.should have_content "Please log in"
   end
 
+  scenario 'logging in takes the user to their dashboard'
+  scenario 'only proper admin can access the app management'
+
   scenario 'as a logged in account holder I should be able to see a message telling me I have no apps' do
     sign_in_as amy
     visit '/admin'
@@ -35,7 +38,4 @@ feature 'General Navigation' do
 
     page.should have_content "Manage Hope"
   end
-
-  scenario 'I should be automatically directed to the proper app if loging into one'
-  scenario 'I should not be able to get to any administration functions if I am not logged in'
 end

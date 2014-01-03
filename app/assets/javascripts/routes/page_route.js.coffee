@@ -8,6 +8,7 @@ App.PagesNewRoute = Ember.Route.extend
         # Sneak our saved/updated machine object into the Location's machine list:  (croz and jared 2013-12-04)
         @modelFor('app').get('pages').pushObject(page)
         @controller.transitionToRoute 'app.dashboard', @modelFor('app')
+      , =>
 
 App.PageEditRoute = Ember.Route.extend
   model: -> @modelFor('page')
@@ -15,6 +16,7 @@ App.PageEditRoute = Ember.Route.extend
     save: (page) ->
       page.save().then =>
         @controller.transitionToRoute 'app.dashboard', @modelFor('app')
+      , =>
     delete: (page) ->
       if confirm("Are you sure you want to delete this page?")
         appModel = @modelFor('app')
@@ -23,3 +25,4 @@ App.PageEditRoute = Ember.Route.extend
           page.deleteRecord()
           page.save().then =>
             @controller.transitionToRoute 'app.dashboard', appModel
+          , =>
