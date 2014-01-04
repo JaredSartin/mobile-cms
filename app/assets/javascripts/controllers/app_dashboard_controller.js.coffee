@@ -5,46 +5,21 @@ App.AppDashboardController = Ember.ObjectController.extend
     unassigned = indexes.unassigned
     if cids in indexes.homepage
       @store.find('page', cids).then (p) ->
-        app.set('homepage', p)
-        app.save()
+        app.set('homepage', p).save()
     delete indexes.homepage
     delete indexes.unassigned
-    @_removeFromChildren(unassigned)
-    for pageId, children of indexes
-      @_updateChildren(pageId, children)
+    app.get('pages').forEach (p) =>
+      prom = []
+      pId = p.get('id')
+      prom.push(p.set('parent', undefined)) if pId in unassigned
+      for pageId, children of indexes
+        if pId in children
+          parent = app.get('pages').findBy('id', pageId)
+          prom.push p.set('parent', parent)
+          prom.push p.set('order', children.indexOf(pId))
 
-  _updateChildren: (pageId, children) ->
-    @store.find('page', pageId).then (p) =>
-      hasIds = p.get('children').getEach('id')
-
-      # Only want the ones that are not in the pages children
-      newChildren = children.reject((id) -> id in hasIds)
-
-      @_addToChildren(p, newChildren) if newChildren.length > 0
-      @_changeChildrenOrder(p, children)
-
-  _addToChildren: (page, newChildrenIds) ->
-    for newChildId in newChildrenIds
-      @store.find('page', newChildId).then (child) =>
-        child.set('parent', page)
-        child.save()
-
-  _removeFromChildren: (staleChildrenIds) ->
-    for staleChildId in staleChildrenIds
-      @store.find('page', staleChildId).then (child) =>
-        child.set('parent', undefined)
-        child.save()
-
-  _changeChildrenOrder: (page, children) ->
-    page.get('children').then (cs) =>
-      needReorder = false
-      cs.forEach (item, index) =>
-        needReorder = true unless item.get('id') == children[index]
-
-      if needReorder
-        children.forEach (item, index) =>
-          item = cs.findBy('id', item)
-          item.set('order', index).save() if item
+      Ember.RSVP.all(prom).then =>
+        p.save()
 
   unassignedPages: (->
     hid = @get('homepage.id')

@@ -7,7 +7,9 @@ feature 'App Management' do
 
     visit_admin_app(hope)
 
+    sleep 1
     page.find('.app-edit-app').click
+    save_screenshot('tmp/page.png')
 
     fill_in "Name", with: "Blunderbuss"
 

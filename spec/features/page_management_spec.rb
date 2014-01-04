@@ -21,6 +21,7 @@ feature 'Page Management' do
     sign_in_as amy
     visit_admin_app(hope)
 
+    sleep 1
     page.find('.app-add-page').click
 
     fill_in "Title", with: "Da first"
@@ -39,6 +40,7 @@ feature 'Page Management' do
     sign_in_as amy
     visit_admin_app(hope)
 
+    sleep 1
     page.should have_content "Not Dis Won"
     page.find('.app-edit-page').click
 
@@ -60,6 +62,7 @@ feature 'Page Management' do
       page.should have_content "Not Dis Won"
     end
 
+    sleep 1
     page.find('.app-edit-page').click
 
     accept_confirmations true
@@ -105,7 +108,6 @@ feature 'Page Management' do
 
       #final check
       visit_admin_app(hope)
-      save_screenshot 'tmp/page.png'
       patiently do
         page.should have_selector(".app-homepage .app-page-#{page1.id}")
         page.should have_selector(".app-unassigned-pages .app-page-#{page2.id}")

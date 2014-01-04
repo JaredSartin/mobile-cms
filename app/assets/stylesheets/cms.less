@@ -5,29 +5,27 @@
 }
 
 .page-drag-placeholder {
-  background: pink;
-  margin-bottom: -74px;
-  &:after {
-    content: "\0000a0"
+  height: 0px;
+  border: 1px solid @admin-green;
+  &:before {
+
   }
 }
 
 .page-list {
-  list-style: none;
-  text-align: center;
-  padding: 0;
-  border: 1px solid red;
-  &.child-pages{
-    display: block;
-    height: 110%;
-    min-width: 100%;
+  min-height: 10px;
+  outline: 1px solid red;
+  list-style-type: none;
+  &.child-pages {
+    padding: 5px 0 5px 5px;
   }
-  li {
-    display: inline-block;
-    margin: 0 auto;
-    padding: 1px;
-    width: 100px;
-    height: 90px;
-    border: 1px solid black;
+  .page-preview {
+    span {
+      display: inline-block;
+      width: 500px;
+      padding: 3px;
+      border-radius: 3px;
+      border: 1px solid grey;
+    }
   }
 }

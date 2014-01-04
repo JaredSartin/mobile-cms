@@ -1,11 +1,11 @@
-// Fetched from: http://builds.emberjs.com/canary/ember-data.js
-// Fetched on: 2014-01-02T03:57:48Z
+// Fetched from channel: canary, with url http://builds.emberjs.com/canary/ember-data.js
+// Fetched on: 2014-01-04T23:11:47Z
 /*!
  * @overview  Ember Data
  * @copyright Copyright 2011-2014 Tilde Inc. and contributors.
  *            Portions Copyright 2011 LivingSocial Inc.
  * @license   Licensed under MIT license (see license.js)
- * @version   1.0.0-beta.5+canary.d6015888
+ * @version   1.0.0-beta.5+canary.72dc74d7
  */
 
 
@@ -61,8 +61,14 @@ var define, requireModule;
 */
 var DS;
 if ('undefined' === typeof DS) {
+  /**
+    @property VERSION
+    @type String
+    @default '1.0.0-beta.5+canary.72dc74d7'
+    @static
+  */
   DS = Ember.Namespace.create({
-    VERSION: '1.0.0-beta.5+canary.d6015888'
+    VERSION: '1.0.0-beta.5+canary.72dc74d7'
   });
 
   if ('undefined' !== typeof window) {
@@ -123,6 +129,7 @@ DS.JSONSerializer = Ember.Object.extend({
 
     @property primaryKey
     @type {String}
+    @default 'id'
   */
   primaryKey: 'id',
 
@@ -747,6 +754,26 @@ DS.JSONSerializer = Ember.Object.extend({
       delete payload.meta;
     }
   },
+
+  /**
+   `keyForAttribute` can be used to define rules for how to convert an
+   attribute name in your model to a key in your JSON.
+
+   Example
+
+   ```javascript
+   App.ApplicationSerializer = DS.RESTSerializer.extend({
+     keyForAttribute: function(attr) {
+       return Ember.String.underscore(attr).toUpperCase();
+     }
+   });
+   ```
+
+   @method keyForAttribute
+   @param {String} key
+   @return {String} normalized key
+  */
+
 
   /**
    `keyForRelationship` can be used to define a custom key when
@@ -1528,11 +1555,42 @@ DS.RecordArray = Ember.ArrayProxy.extend(Ember.Evented, {
 var get = Ember.get;
 
 /**
+  Represents a list of records whose membership is determined by the
+  store. As records are created, loaded, or modified, the store
+  evaluates them to determine if they should be part of the record
+  array.
+
   @class FilteredRecordArray
   @namespace DS
   @extends DS.RecordArray
 */
 DS.FilteredRecordArray = DS.RecordArray.extend({
+  /**
+    The filterFunction is a function used to test records from the store to
+    determine if they should be part of the record array.
+
+    Example
+
+    ```javascript
+    var allPeople = store.all('person');
+    allPeople.mapBy('name'); // ["Tom Dale", "Yehuda Katz", "Trek Glowacki"]
+
+    var people = store.filter('person', function(person) {
+      if (person.get('name').match(/Katz$/)) { return true; }
+    });
+    people.mapBy('name'); // ["Yehuda Katz"]
+
+    var notKatzFilter = function(person) {
+      return !person.get('name').match(/Katz$/);
+    };
+    people.set('filterFunction', notKatzFilter);
+    people.mapBy('name'); // ["Tom Dale", "Trek Glowacki"]
+    ```
+
+    @method filterFunction
+    @param {DS.Model} record
+    @return {Boolean} `true` if the record should be in the array
+  */
   filterFunction: null,
   isLoaded: true,
 
@@ -1541,6 +1599,10 @@ DS.FilteredRecordArray = DS.RecordArray.extend({
     throw new Error("The result of a client-side filter (on " + type + ") is immutable.");
   },
 
+  /**
+    @method updateFilter
+    @private
+  */
   updateFilter: Ember.observer(function() {
     var manager = get(this, 'manager');
     manager.updateFilter(this, get(this, 'type'), get(this, 'filterFunction'));
@@ -1559,6 +1621,11 @@ DS.FilteredRecordArray = DS.RecordArray.extend({
 var get = Ember.get, set = Ember.set;
 
 /**
+  Represents an ordered list of records whose order and membership is
+  determined by the adapter. For example, a query sent to the adapter
+  may trigger a search on the server, whose results would be loaded
+  into an instance of the `AdapterPopulatedRecordArray`.
+
   @class AdapterPopulatedRecordArray
   @namespace DS
   @extends DS.RecordArray
@@ -1571,6 +1638,11 @@ DS.AdapterPopulatedRecordArray = DS.RecordArray.extend({
     throw new Error("The result of a server query (on " + type + ") is immutable.");
   },
 
+  /**
+    @method load
+    @private
+    @param {Array} data
+  */
   load: function(data) {
     var store = get(this, 'store'),
         type = get(this, 'type'),
@@ -3048,7 +3120,6 @@ DS.Store = Ember.Object.extend({
 
     @method pushPayload
     @param {String} type
-    @param {String or subclass of DS.Model} type
     @param {Object} payload
     @return {DS.Model} the record that was created or updated.
   */
@@ -7941,6 +8012,55 @@ function coerceId(id) {
   @extends DS.JSONSerializer
 */
 DS.RESTSerializer = DS.JSONSerializer.extend({
+  /**
+    If you want to do normalizations specific to some part of the payload, you
+    can specify those under `normalizeHash`.
+
+    For example, given the following json where the the `IDs` under
+    `"comments"` are provided as `_id` instead of `id`.
+
+    ```javascript
+    {
+      "post": {
+        "id": 1,
+        "title": "Rails is omakase",
+        "comments": [ 1, 2 ]
+      },
+      "comments": [{
+        "_id": 1,
+        "body": "FIRST"
+      }, {
+        "_id": 2,
+        "body": "Rails is unagi"
+      }]
+    }
+    ```
+
+    You use `normalizeHash` to normalize just the comments:
+
+    ```javascript
+    App.PostSerializer = DS.RESTSerializer.extend({
+      normalizeHash: {
+        comments: function(hash) {
+          hash.id = hash._id;
+          delete hash._id;
+          return hash;
+        }
+      }
+    });
+    ```
+
+    The key under `normalizeHash` is usually just the original key
+    that was in the original payload. However, key names will be
+    impacted by any modifications done in the `normalizePayload`
+    method. The `DS.RESTSerializer`'s default implemention makes no
+    changes to the payload keys.
+
+    @property normalizeHash
+    @type {Object}
+    @default undefined
+  */
+
   /**
     Normalizes a part of the JSON payload returned by
     the server. You should override this method, munge the hash

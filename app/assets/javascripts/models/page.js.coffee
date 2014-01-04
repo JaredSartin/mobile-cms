@@ -12,8 +12,11 @@ App.Page = DS.Model.extend
     @get('page')
   ).property('page')
 
-  sortedChildren: ( ->
-    Ember.ArrayProxy.createWithMixins Ember.SortableMixin,
-      sortProperties: ["order"]
-      content: @get('children')
-  ).property('model.children.@each.order', 'model.children.@each')
+  sortedChildren: Ember.computed.sort('children', (c1, c2) ->
+    if c1.get('order') > c2.get('order')
+      1
+    else if c1.get('order') < c2.get('order')
+      -1
+    else
+      0
+  )
