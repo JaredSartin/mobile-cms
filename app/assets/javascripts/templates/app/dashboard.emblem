@@ -4,6 +4,7 @@ ul.app-homepage.app-pages.page-list
   if homepage
     with homepage
       partial 'page/dashboard_list'
+h4 Unassigned Pages
 ul.app-unassigned-pages.app-pages.page-list
   each unassignedPages
     unless parent

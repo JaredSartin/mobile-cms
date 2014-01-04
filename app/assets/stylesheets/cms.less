@@ -6,13 +6,28 @@
 
 .page-drag-placeholder {
   background: pink;
-  display: inline-block;
-  width: 100%;
-  height: 30px;
+  margin-bottom: -74px;
+  &:after {
+    content: "\0000a0"
+  }
 }
 
 .page-list {
+  list-style: none;
+  text-align: center;
+  padding: 0;
   border: 1px solid red;
-  padding: 10px 5px 0px;
-  min-height: 5px;
+  &.child-pages{
+    display: block;
+    height: 110%;
+    min-width: 100%;
+  }
+  li {
+    display: inline-block;
+    margin: 0 auto;
+    padding: 1px;
+    width: 100px;
+    height: 90px;
+    border: 1px solid black;
+  }
 }

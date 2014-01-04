@@ -139,9 +139,12 @@ feature 'Page Management' do
       visit_admin_app(hope)
       page.should have_selector(".app-unassigned-pages .app-page-#{page1.id}")
     end
+
+    scenario 'pages can be rearranged' do
+      pending "Write this when dragging is better"
+    end
   end
 
-  scenario 'pages can be rearranged'
   scenario 'page creation can show errors'
   scenario 'images can be uploaded to pages'
 end

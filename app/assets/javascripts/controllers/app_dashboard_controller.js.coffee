@@ -21,6 +21,7 @@ App.AppDashboardController = Ember.ObjectController.extend
       newChildren = children.reject((id) -> id in hasIds)
 
       @_addToChildren(p, newChildren) if newChildren.length > 0
+      @_changeChildrenOrder(p, children)
 
   _addToChildren: (page, newChildrenIds) ->
     for newChildId in newChildrenIds
@@ -33,6 +34,17 @@ App.AppDashboardController = Ember.ObjectController.extend
       @store.find('page', staleChildId).then (child) =>
         child.set('parent', undefined)
         child.save()
+
+  _changeChildrenOrder: (page, children) ->
+    page.get('children').then (cs) =>
+      needReorder = false
+      cs.forEach (item, index) =>
+        needReorder = true unless item.get('id') == children[index]
+
+      if needReorder
+        children.forEach (item, index) =>
+          item = cs.findBy('id', item)
+          item.set('order', index).save() if item
 
   unassignedPages: (->
     hid = @get('homepage.id')

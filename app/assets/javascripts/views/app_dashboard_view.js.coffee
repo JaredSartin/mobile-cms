@@ -10,8 +10,8 @@ App.AppDashboardView = Ember.View.extend
         connectWith: '.app-pages'
         placeholder: 'page-drag-placeholder'
         dropOnEmpty: true
+        helper: "clone"
         stop: (e, ui) =>
-          $('.app-pages').removeClass("draggable-target")
           indexes = {}
           indexes.homepage = @_getPages('.app-homepage')
           indexes.unassigned = @_getPages('.app-unassigned-pages')
