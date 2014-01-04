@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131230033748) do
+ActiveRecord::Schema.define(version: 20140104021058) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -50,14 +50,14 @@ ActiveRecord::Schema.define(version: 20131230033748) do
     t.integer  "user_id"
     t.string   "name"
     t.string   "cname"
-    t.string   "subdomain"
+    t.string   "shortname"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "homepage_id"
   end
 
   add_index "apps", ["cname"], name: "index_apps_on_cname", unique: true, using: :btree
-  add_index "apps", ["subdomain"], name: "index_apps_on_subdomain", unique: true, using: :btree
+  add_index "apps", ["shortname"], name: "index_apps_on_shortname", unique: true, using: :btree
 
   create_table "pages", force: true do |t|
     t.integer  "page_id"

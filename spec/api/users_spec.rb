@@ -51,13 +51,13 @@ describe "User API", type: :api do
         got1["user_id"].should == amy.id
         got1["name"].should == app1.name
         got1["cname"].should == app1.cname
-        got1["subdomain"].should == app1.subdomain
+        got1["shortname"].should == app1.shortname
 
         got2["id"].should == app2.id
         got2["user_id"].should == amy.id
         got2["name"].should == app2.name
         got2["cname"].should == app2.cname
-        got2["subdomain"].should == app2.subdomain
+        got2["shortname"].should == app2.shortname
       end
 
       it "returns an error when there is not logged in user" do

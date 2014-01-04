@@ -12,7 +12,7 @@ describe Api::V1::AppSerializer do
                                   homepage_id: app.homepage_id,
                                   name: app.name,
                                   cname: app.cname,
-                                  subdomain: app.subdomain,
+                                  shortname: app.shortname,
                                   links: {
                                     pages: "/api/apps/#{app.id}/pages"
                                   }

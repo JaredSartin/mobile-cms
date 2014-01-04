@@ -3,8 +3,8 @@ form role="form"
     label.control-label for="app-name" Name
     Ember.TextField valueBinding="name" id="app-name" class="form-control"
   App.FormGroup
-    label.control-label for="app-subdomain" Subdomain
-    Ember.TextField valueBinding="subdomain" id="app-subdomain" class="form-control"
+    label.control-label for="app-shortname" Subdomain
+    Ember.TextField valueBinding="shortname" id="app-shortname" class="form-control"
   App.FormGroup
     label.control-label for="app-cname" CName
     Ember.TextField valueBinding="cname" id="app-cname" class="form-control"

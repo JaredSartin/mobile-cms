@@ -14,7 +14,7 @@ describe "App API", type: :api do
       app["id"].should == app_model.id
       app["name"].should == app_model.name
       app["cname"].should == app_model.cname
-      app["subdomain"].should == app_model.subdomain
+      app["shortname"].should == app_model.shortname
       # app["homepage_id"].should == app_model.homepage_id
     end
 
@@ -50,7 +50,7 @@ describe "App API", type: :api do
       it "returns the updated app" do
         sign_in_as amy
 
-        put api_app_path(app_model), {app: {name: 'Foober', cname: 'bar.baz', subdomain: 'zork', homepage_id: 99}}
+        put api_app_path(app_model), {app: {name: 'Foober', cname: 'bar.baz', shortname: 'zork', homepage_id: 99}}
 
         last_response.status.should == 200
 
@@ -58,7 +58,7 @@ describe "App API", type: :api do
         app["id"].should == app_model.id
         app["name"].should == "Foober"
         app["cname"].should == "bar.baz"
-        app["subdomain"].should == "zork"
+        app["shortname"].should == "zork"
         app["homepage_id"].should == 99
       end
 

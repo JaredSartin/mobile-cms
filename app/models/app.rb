@@ -3,6 +3,6 @@ class App < ActiveRecord::Base
   has_many :pages
   belongs_to :homepage, class_name: 'Page'
 
-  validates :name, :subdomain, :user, presence: true
-  validates :subdomain, uniqueness: true
+  validates :name, :shortname, :user, presence: true
+  validates :shortname, uniqueness: true
 end

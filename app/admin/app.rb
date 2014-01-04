@@ -4,7 +4,7 @@ ActiveAdmin.register App do
     column :user do
       "#{user.name} (#{user.email})"
     end
-    column :subdomain
+    column :shortname
     column :cname
     column :created_at
     default_actions
@@ -16,7 +16,7 @@ ActiveAdmin.register App do
     f.inputs "Client Information" do
       f.input :name
       f.input :user do User.all end
-      f.input :subdomain
+      f.input :shortname
       f.input :cname
     end
     f.actions
@@ -24,7 +24,7 @@ ActiveAdmin.register App do
 
   controller do
     def permitted_params
-      params.permit app: [:name, :subdomain, :cname, :user_id]
+      params.permit app: [:name, :shortname, :cname, :user_id]
     end
   end
 end

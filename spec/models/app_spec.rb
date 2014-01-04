@@ -7,7 +7,7 @@ describe App do
 
   it { should validate_presence_of(:user) }
   it { should validate_presence_of(:name) }
-  it { should validate_presence_of(:subdomain) }
+  it { should validate_presence_of(:shortname) }
 
-  it { should validate_uniqueness_of(:subdomain) }
+  it { should validate_uniqueness_of(:shortname) }
 end

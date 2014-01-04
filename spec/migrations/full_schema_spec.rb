@@ -23,7 +23,7 @@ describe "full schema spec" do
         t.column :user_id, :integer
         t.column :homepage_id, :integer
         t.column :name, :string
-        t.column :subdomain, :string
+        t.column :shortname, :string
         t.column :cname, :string
         # Needs Paperclip setup
         # t.column :logo, :string
@@ -31,7 +31,7 @@ describe "full schema spec" do
         # client type? page limit? pay flag?
         t.column :created_at, :datetime
         t.column :updated_at, :datetime
-        t.index :subdomain, name: 'index_apps_on_subdomain', unique: true
+        t.index :shortname, name: 'index_apps_on_shortname', unique: true
         t.index :cname, name: 'index_apps_on_cname', unique: true
       end
 
