@@ -5,7 +5,6 @@ feature 'Client viewing the app' do
     pages = build_hope_app
     visit client_app(pages[:app])
 
-    pending 'finish client'
     page.should have_content pages[:homepage].body
 
     click_page_link(pages[:page1])

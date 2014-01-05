@@ -20,12 +20,12 @@ module FeatureHelpers
     "/#{app.shortname}"
   end
 
-  def click_back_button
-    page.find(".app-back")
+  def click_back_link
+    page.find(".app-back").click
   end
 
-  def click_page_link(page)
-    page.find(".app-view-page-#{page.id}")
+  def click_page_link(page_model)
+    page.find(".app-view-page", text: page_model.title).click
   end
 
   def build_hope_app

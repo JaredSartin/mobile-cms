@@ -23,5 +23,6 @@ App.Router.map ()->
   )
 
   @resource('client', path: '/:app_shortname', ->
+    @route('homepage', path: '/')
     @route('page', path: '/page/:page_id')
   )

@@ -1,0 +1,10 @@
+.col-md-3
+  if parent
+    linkTo 'client.page' parent class="app-back"  | #{parent.title}
+  if children
+    ul.nav.nav-pills.nav-stacked
+      each sortedChildren
+        li
+          linkTo 'client.page' this class="app-view-page" | #{title}
+.col-md-9.app-main-content
+  == body
