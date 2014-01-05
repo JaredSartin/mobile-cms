@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "App API", type: :api do
   context "v1" do
-    let(:app_model) { Fabricate(:app, user_id: amy.id) }
+    let!(:app_model) { Fabricate(:app, user_id: amy.id, shortname: 'hope') }
     it "gives the app" do
       sign_in_as amy
 
@@ -10,13 +10,31 @@ describe "App API", type: :api do
 
       last_response.status.should == 200
 
-      app = get_json_object("app")
-      app["id"].should == app_model.id
-      app["name"].should == app_model.name
-      app["cname"].should == app_model.cname
-      app["shortname"].should == app_model.shortname
+      app_json = get_json_object("app")
+      app_json["id"].should == app_model.id
+      app_json["name"].should == app_model.name
+      app_json["cname"].should == app_model.cname
+      app_json["shortname"].should == app_model.shortname
       # app["homepage_id"].should == app_model.homepage_id
     end
+
+    it "looks up the app based on the shortname" do
+      get api_apps_path, shortname: 'hope'
+
+      last_response.status.should == 200
+
+      apps = get_json_object("apps")
+      apps.length.should == 1
+      app_json = apps[0]
+
+      app_json = apps.first
+      app_json["id"].should == app_model.id
+      app_json["name"].should == app_model.name
+      app_json["cname"].should == app_model.cname
+      app_json["shortname"].should == app_model.shortname
+    end
+
+    it "returns errors when no app found by shortname"
 
     it "gives the apps' pages" do
       page1 = Fabricate(:page, app_id: app_model.id)

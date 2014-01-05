@@ -2,10 +2,8 @@ App.Router.reopen
   location: 'history'
 
 App.Router.map ()->
-  # We hope to have an app set here!
-  @resource('app', path: '/', ->
-    @route('page', path: '/page/:page_id')
-  )
+  # @resource('dashboard', path: '/')
+
   @resource('admin', ->
     @route('dashboard', path: '/')
     @resource('app', path: '/app/:app_id', ->
@@ -22,4 +20,8 @@ App.Router.map ()->
         @route('new')
       )
     )
+  )
+
+  @resource('client', path: '/:app_shortname', ->
+    @route('page', path: '/page/:page_id')
   )

@@ -1,0 +1,5 @@
+nav.navbar.navbar-fixed-top.navbar-inverse
+  .navbar-header
+    a.navbar-brand= name
+.container
+  outlet

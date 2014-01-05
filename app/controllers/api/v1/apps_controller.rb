@@ -9,8 +9,14 @@ module Api
       #     render json: @app, serializer: AppSerializer
       #   end
       # end
+      
+      def index
+        @apps = App.where(shortname: params[:shortname])
+        render json: @apps, each_serializer: AppSerializer
+      end
 
       def update
+        # needs cancan
         if @app.update_attributes(app_params)
           render json: @app, serializer: AppSerializer
         end
