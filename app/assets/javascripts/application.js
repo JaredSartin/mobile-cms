@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require jquery.ui.sortable
 //= require twitter/bootstrap
+//= require bootstrap-wysihtml5/b3
 //= require pace.min
 //= require handlebars
 //= require ember

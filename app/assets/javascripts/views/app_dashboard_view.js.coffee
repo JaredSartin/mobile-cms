@@ -28,7 +28,7 @@ App.AppDashboardView = Ember.View.extend
           $('.app-pages').sortable('cancel')
           controller.changePageOrder sort_id, indexes
       )
-    , 100
+    , 300
   ).observes('controller.pages.@each')
 
   _getPages: (sel) ->

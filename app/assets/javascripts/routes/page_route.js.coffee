@@ -3,6 +3,7 @@ App.PagesNewRoute = Ember.Route.extend
 
   actions:
     save: (page) ->
+      page.set('body', $('textarea.app-page-body').val())
       page.save().then =>
         # EMBERRRRR! https://github.com/emberjs/data/issues/1308 
         # Sneak our saved/updated machine object into the Location's machine list:  (croz and jared 2013-12-04)
@@ -14,6 +15,7 @@ App.PageEditRoute = Ember.Route.extend
   model: -> @modelFor('page')
   actions:
     save: (page) ->
+      page.set('body', $('textarea.app-page-body').val())
       page.save().then =>
         @controller.transitionToRoute 'app.dashboard', @modelFor('app')
       , =>

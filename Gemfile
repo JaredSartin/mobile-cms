@@ -12,6 +12,7 @@ gem 'emblem-rails', '0.2.0'
 gem 'therubyracer', '0.12.0'
 gem "less-rails", "2.4.2"
 gem "less-rails-bootstrap", "3.0.6"
+gem 'bootstrap-wysihtml5-rails', require: "bootstrap-wysihtml5-rails", github: "Nerian/bootstrap-wysihtml5-rails"
 
 # Assets
 gem 'uglifier', '2.3.0'
