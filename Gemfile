@@ -61,3 +61,7 @@ group :test do
   gem 'database_cleaner', '1.2.0'
   gem 'fire_poll', '1.2.0'
 end
+
+group :production do
+  gem 'newrelic_rpm', '3.7.1.182'
+end
