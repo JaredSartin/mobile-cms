@@ -14,6 +14,8 @@ App.AppDashboardView = Ember.View.extend
         placeholder: 'page-drag-placeholder'
         dropOnEmpty: true
         helper: "clone"
+        opacity: 0.5
+        tolerance: "pointer"
         start: (e, ui) =>
           ui.item.show()
         stop: (e, ui) =>

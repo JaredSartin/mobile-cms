@@ -1,7 +1,7 @@
 li class="app-page-{{unbound id}} app-page page-preview" data-id="{{unbound id}}"
   span
     =title
-    linkTo 'page.edit' this class="app-edit-page" | Edit
+    linkTo 'page.edit' this class="app-edit-page pull-right edit-page" | Edit
   ul.app-child-pages.app-pages.page-list.child-pages class="app-page-{{unbound id}}-children"
     each sortedChildren
       partial 'page/dashboard_list'
