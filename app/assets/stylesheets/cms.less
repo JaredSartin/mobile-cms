@@ -1,12 +1,12 @@
 //Main Styles
 
 .container {
-  margin-top: 55px;
+  margin-top: 65px;
 }
 
 .page-drag-placeholder {
   height: 3px;
-  background-color: @admin-green;
+  background-color: @brand-success;
   position: relative;
   overflow: visible;
   width: 450px;
@@ -22,7 +22,7 @@
     height: 0;
     border-top: 6px solid transparent;
     border-bottom: 6px solid transparent;
-    border-left: 7px solid @admin-green;
+    border-left: 7px solid @brand-success;
   }
 }
 
@@ -65,6 +65,21 @@
   }
 }
 
+// Edit form //
 #page-body {
   height: 200px;
+}
+
+.side-nav {
+  li {
+    a {
+      border-radius: 0;
+      border-bottom: 1px solid @gray-lighter;
+      &.glyphicon-before:before {
+        margin-left: -10px;
+        margin-right: 10px;
+        font-size: .8em;
+      }
+    }
+  }
 }

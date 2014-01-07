@@ -1,5 +1,10 @@
-nav.navbar.navbar-fixed-top.navbar-inverse.centered
+nav.navbar.navbar-fixed-top.navbar-default.centered
   .navbar-header
-    a.navbar-brand= name
+    button.navbar-toggle data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button"
+      span.sr-only Toggle navigation
+      span.icon-bar
+      span.icon-bar
+      span.icon-bar
+    linkTo 'client.homepage' class="navbar-brand" | #{name}
 .container
   outlet
