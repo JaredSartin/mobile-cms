@@ -25,8 +25,10 @@ describe "full schema spec" do
         t.column :name, :string
         t.column :shortname, :string
         t.column :cname, :string
-        # Needs Paperclip setup
-        # t.column :logo, :string
+        t.column :icon_content_type, :string
+        t.column :icon_file_name, :string
+        t.column :icon_file_size, :integer
+        t.column :icon_updated_at, :datetime
         # URL, app urls, color scheme, font?
         # client type? page limit? pay flag?
         t.column :created_at, :datetime

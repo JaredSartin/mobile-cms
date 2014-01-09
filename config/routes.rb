@@ -15,6 +15,7 @@ MobileCms::Application.routes.draw do
       resources :apps do
         member do
           get :pages
+          post :icon
         end
       end
 

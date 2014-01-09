@@ -89,5 +89,27 @@ describe "App API", type: :api do
       it "returns errors on the app"
       it "returns errors if you cannot create an app"
     end
+
+    describe "updating the app icon" do
+      it 'updates the icon' do
+        sign_in_as amy
+
+        file_path = Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/logo.png'), 'image/png')
+        post icon_api_app_path(app_model), icon: file_path
+
+        last_response.status.should == 200
+
+        app_json = get_json_object("app")
+        app_json["id"].should == app_model.id
+        app_json["name"].should == app_model.name
+        app_json["cname"].should == app_model.cname
+        app_json["shortname"].should == app_model.shortname
+        app_json["icon_url"].should =~ /logo.png/
+      end
+
+      it 'gives errors on update'
+      it 'gives errors when not allowed to change icon'
+      it 'gives not found when wrong app id'
+    end
   end
 end

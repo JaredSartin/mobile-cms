@@ -13,6 +13,7 @@ describe Api::V1::AppSerializer do
                                   name: app.name,
                                   cname: app.cname,
                                   shortname: app.shortname,
+                                  icon_url: app.icon.url(:android),
                                   links: {
                                     pages: "/api/apps/#{app.id}/pages"
                                   }

@@ -30,6 +30,12 @@ module Api
         render json: @app.pages, each_serializer: PageSerializer, root: 'pages'
       end
 
+      def icon
+        if @app.update_attributes(icon: params[:icon])
+          render json: @app, serializer: AppSerializer
+        end
+      end
+
       private
       def app_params
         params.require(:app).permit(:name, :cname, :shortname, :homepage_id)

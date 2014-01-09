@@ -7,9 +7,7 @@ feature 'App Management' do
 
     visit_admin_app(hope)
 
-    sleep 1
     page.find('.app-edit-app').click
-    save_screenshot('tmp/page.png')
 
     fill_in "Name", with: "Blunderbuss"
 
@@ -19,8 +17,26 @@ feature 'App Management' do
     page.should have_content "Blunderbuss"
   end
 
+  scenario 'an app can get a custom logo uploaded' do
+    hope = Fabricate(:app, user: amy, name: "Hope")
+    sign_in_as amy
+
+    visit_admin_app(hope)
+
+    page.find('.app-edit-app').click
+
+    page.should have_tag(".app-app-icon[href$=#{/missing/}]")
+
+    path = File.join(::Rails.root, "spec/fixtures/logo.png") 
+    attach_file('app-icon', path)
+
+    page.find('.app-save').click
+
+    page.should have_selector('.app-app-icon', href: /logo/)
+  end
+
+  scenario 'only pngs and gifs can be uploaded'
   scenario 'an app can be created'
-  scenario 'an app can get a custom logo uploaded'
   scenario 'an app can get custom colors and style set'
   scenario 'an app can be deleted?'
   scenario 'users can be added as managers'

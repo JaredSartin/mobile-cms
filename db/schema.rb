@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140104021058) do
+ActiveRecord::Schema.define(version: 20140109041933) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -54,6 +54,10 @@ ActiveRecord::Schema.define(version: 20140104021058) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "homepage_id"
+    t.string   "icon_file_name"
+    t.string   "icon_content_type"
+    t.integer  "icon_file_size"
+    t.datetime "icon_updated_at"
   end
 
   add_index "apps", ["cname"], name: "index_apps_on_cname", unique: true, using: :btree

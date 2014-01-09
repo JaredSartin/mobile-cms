@@ -1,12 +1,21 @@
 form role="form"
+  input type="hidden" name="app_id" value=id
   App.FormGroup
     label.control-label for="app-name" Name
     Ember.TextField valueBinding="name" id="app-name" class="form-control"
   App.FormGroup
     label.control-label for="app-shortname" Subdomain
     Ember.TextField valueBinding="shortname" id="app-shortname" class="form-control"
+    %span.help-block CAREFUL! If this changes, installed apps could stop functioning
   App.FormGroup
     label.control-label for="app-cname" CName
     Ember.TextField valueBinding="cname" id="app-cname" class="form-control"
+    %span.help-block CAREFUL! If this changes, installed apps could stop functioning
+  App.FormGroup
+    img.pull-right src=iconUrl
+    label.control-label for="app-icon" Icon
+    input#app-icon type='file' accept="image/gif, image/png, image/x-png" name="icon"
+    %span.help-block Must be at least 512px by 512px and gif or png
+    
   App.FormGroup 
     button.btn.btn-info.app-save{action save this} Save

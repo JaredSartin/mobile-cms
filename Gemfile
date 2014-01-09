@@ -35,6 +35,8 @@ gem 'cancan', '1.6.10'
 gem 'i18n', '0.6.5'
 gem 'i18n-js', github: 'torandi/i18n-js'
 
+gem 'paperclip', '3.5.2'
+
 group :development do
   gem 'quiet_assets', '1.0.2'
   gem 'bullet', '4.6.0'
@@ -56,7 +58,7 @@ group :test do
   gem 'launchy', '2.3.0'
   gem 'birdbath', '1.3.5'
   gem 'capybara', '2.1.0'
-  gem 'poltergeist', '1.5.0'
+  gem 'poltergeist', '1.4.1'
   gem 'shoulda-matchers', '2.4.0'
   gem 'database_cleaner', '1.2.0'
   gem 'fire_poll', '1.2.0'
