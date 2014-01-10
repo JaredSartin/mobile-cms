@@ -4,7 +4,7 @@ class App < ActiveRecord::Base
   belongs_to :homepage, class_name: 'Page'
 
   has_attached_file :icon, {
-    default_url: "/images/:style/missing_icon.png",
+    default_url: "/images/:attachment/placeholder/:style/icon.png",
     path: ":rails_root/public/images/:attachment/:id/:style/:basename.:extension",
     url: "/images/:attachment/:id/:style/:basename.:extension",
     styles: {

@@ -25,7 +25,7 @@ feature 'App Management' do
 
     page.find('.app-edit-app').click
 
-    page.should have_tag(".app-app-icon[href$=#{/missing/}]")
+    page.should have_css(".app-app-icon[scr=~#{/missing/}]")
 
     path = File.join(::Rails.root, "spec/fixtures/logo.png") 
     attach_file('app-icon', path)
