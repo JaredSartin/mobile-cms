@@ -25,14 +25,16 @@ feature 'App Management' do
 
     page.find('.app-edit-app').click
 
-    page.should have_css(".app-app-icon[scr=~#{/missing/}]")
+    page.find(".app-app-icon")['src'].should =~ /placeholder/
 
     path = File.join(::Rails.root, "spec/fixtures/logo.png") 
     attach_file('app-icon', path)
 
-    page.find('.app-save').click
+    patiently do
+      page.find(".app-app-icon")['src'].should =~ /logo/
+    end
 
-    page.should have_selector('.app-app-icon', href: /logo/)
+    page.find('.app-save').click
   end
 
   scenario 'only pngs and gifs can be uploaded'
