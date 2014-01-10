@@ -9,6 +9,7 @@ module Api
       ICON_TYPES.each do |type|
         method_name = "#{type.to_s}_icon"
         define_method method_name do
+          type = :original if Rails.env.test?
           object.icon.url(type)
         end
       end
