@@ -28,5 +28,5 @@ MobileCms::Application.routes.draw do
   end
 
   root to: 'site#index'
-  get '(*foo)' => 'site#index'  # capture any route and its params and re-route to site#index
+  get ':shortname(/*foo)' => 'site#index'  # capture any route and its params and re-route to site#index
 end

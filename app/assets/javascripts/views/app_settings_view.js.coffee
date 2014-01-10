@@ -9,7 +9,9 @@ App.AppSettingsView = Ember.View.extend
       stop: =>
         Pace.stop()
       done: (e, data) =>
-        @controller.set('iconUrl', data.response().result.app.icon_url)
+        iconTypes = ['appleSmallestIcon', 'appleSmallIcon', 'appleMediumIcon', 'appleLargeIcon', 'androidIcon']
+        for iconType in iconTypes
+          @controller.set(iconType, data.response().result.app[iconType.underscore()])
     )
 
   willDestroyElement: ->

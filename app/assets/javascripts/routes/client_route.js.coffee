@@ -3,7 +3,8 @@ App.ClientRoute = Ember.Route.extend
     @store.find('app', shortname: params.app_shortname)
 
   setupController: (controller, model) ->
-    controller.set('model', model.content[0])
+    appModel = model.content[0]
+    controller.set('model', appModel)
 
 App.ClientHomepageRoute = Ember.Route.extend
   model: -> @modelFor('client').content[0].get('homepage')

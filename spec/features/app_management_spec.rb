@@ -35,6 +35,16 @@ feature 'App Management' do
     end
 
     page.find('.app-save').click
+
+    visit client_app(hope)
+
+    patiently do
+      page.find("#app-apple-icon-smallest", visible: false)['href'].should =~ /logo/
+      page.find("#app-apple-icon-small", visible: false)['href'].should =~ /logo/
+      page.find("#app-apple-icon-medium", visible: false)['href'].should =~ /logo/
+      page.find("#app-apple-icon-large", visible: false)['href'].should =~ /logo/
+      page.find("#app-android-icon", visible: false)['href'].should =~ /logo/
+    end
   end
 
   scenario 'only pngs and gifs can be uploaded'

@@ -13,7 +13,11 @@ describe Api::V1::AppSerializer do
                                   name: app.name,
                                   cname: app.cname,
                                   shortname: app.shortname,
-                                  icon_url: app.icon.url(:android),
+                                  apple_smallest_icon: app.icon.url(:apple_smallest),
+                                  apple_small_icon: app.icon.url(:apple_small),
+                                  apple_medium_icon: app.icon.url(:apple_medium),
+                                  apple_large_icon: app.icon.url(:apple_large),
+                                  android_icon: app.icon.url(:android),
                                   links: {
                                     pages: "/api/apps/#{app.id}/pages"
                                   }

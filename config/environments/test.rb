@@ -34,4 +34,7 @@ MobileCms::Application.configure do
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
   config.ember.variant = :development
+  Paperclip::Attachment.default_options.merge!({
+    :path => "tmp/test/uploads/:style/:filename"
+  })
 end

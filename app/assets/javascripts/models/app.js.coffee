@@ -5,4 +5,8 @@ App.App = DS.Model.extend
   cname: DS.attr 'string'
   homepage: DS.belongsTo 'page', async: true
   pages: DS.hasMany 'page', async: true
-  iconUrl: DS.attr 'string'
+  appleSmallestIcon: DS.attr 'string'
+  appleSmallIcon: DS.attr 'string'
+  appleMediumIcon: DS.attr 'string'
+  appleLargeIcon: DS.attr 'string'
+  androidIcon: DS.attr 'string'

@@ -1,14 +1,27 @@
 !!!
 %html
   %head
-    %title Mobile CMS
+    %title Publicizr
     = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "application"
     - if user_signed_in?
       %meta{name: 'current-user-id', content: current_user.id}
+    %meta{name:"mobile-web-app-capable", content:"yes"}
     %meta{name:"apple-mobile-web-app-capable", content:"yes"}
     %meta{name:"apple-mobile-web-app-status-bar-style", content:"black"}
     %meta{name:"viewport", content:"width=320, initial-scale=1.0, user-scalable=no"}
+    - if @app
+      %link#app-apple-icon-smallest{href: @app.icon.url(:apple_smallest), rel: "apple-touch-icon"}
+      %link#app-apple-icon-small{href: @app.icon.url(:apple_small), rel: "apple-touch-icon", sizes: "76x76"}
+      %link#app-apple-icon-medium{href: @app.icon.url(:apple_medium), rel: "apple-touch-icon", sizes: "120x120"}
+      %link#app-apple-icon-large{href: @app.icon.url(:apple_large), rel: "apple-touch-icon", sizes: "152x152"}
+      %link#app-android-icon{href: @app.icon.url(:android), rel: "shortcut icon", sizes: "196x196"}
+    - else
+      %link#app-apple-icon-smallest{href: "/images/icons/placeholder/apple_smallest/icon.png", rel: "apple-touch-icon"}
+      %link#app-apple-icon-small{href: "/images/icons/placeholder/apple_small/icon.png", rel: "apple-touch-icon", sizes: "76x76"}
+      %link#app-apple-icon-medium{href: "/images/icons/placeholder/apple_medium/icon.png", rel: "apple-touch-icon", sizes: "120x120"}
+      %link#app-apple-icon-large{href: "/images/icons/placeholder/apple_large/icon.png", rel: "apple-touch-icon", sizes: "152x152"}
+      %link#app-android-icon{href: "/images/icons/placeholder/android/icon.png", rel: "shortcut icon", sizes: "196x196"}
     = csrf_meta_tags
 %body
   = yield

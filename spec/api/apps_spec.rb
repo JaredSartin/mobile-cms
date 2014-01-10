@@ -104,7 +104,10 @@ describe "App API", type: :api do
         app_json["name"].should == app_model.name
         app_json["cname"].should == app_model.cname
         app_json["shortname"].should == app_model.shortname
-        app_json["icon_url"].should =~ /logo.png/
+        icons = [:apple_smallest_icon, :apple_small_icon, :apple_medium_icon, :apple_large_icon, :android_icon]
+        icons.each do |type|
+          app_json[type.to_s].should =~ /logo.png/
+        end
       end
 
       it 'gives errors on update'
