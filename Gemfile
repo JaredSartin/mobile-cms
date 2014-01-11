@@ -36,6 +36,7 @@ gem 'i18n', '0.6.5'
 gem 'i18n-js', github: 'torandi/i18n-js'
 
 gem 'paperclip', '3.5.2'
+gem 'aws-sdk', '1.32.0'
 
 group :development do
   gem 'quiet_assets', '1.0.2'
