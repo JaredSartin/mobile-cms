@@ -15,8 +15,8 @@
 /log/*.log
 /tmp
 
-public/images/*
-!public/images/icons/
+public/assets/*
+!public/assets/icons/
 
-public/images/icons/*
-!public/images/icons/placeholder
+public/assets/icons/*
+!public/assets/icons/placeholder
