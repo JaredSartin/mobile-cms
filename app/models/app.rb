@@ -15,10 +15,10 @@ class App < ActiveRecord::Base
       android: ["196x196#", :png], 
     },
     convert_options: {
-      apple_smallest: "-alpha remove -background white",
-      apple_small: "-alpha remove -background white",
-      apple_medium: "-alpha remove -background white",
-      apple_large: "-alpha remove -background white",
+      apple_smallest: "-background white -flatten",
+      apple_small: "-background white -flatten",
+      apple_medium: "-background white -flatten",
+      apple_large: "-background white -flatten",
     },
   }
   validates_attachment :icon, {size: {in: 0..3.megabytes}}
