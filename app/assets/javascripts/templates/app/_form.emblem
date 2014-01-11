@@ -12,7 +12,7 @@ form role="form"
     Ember.TextField valueBinding="cname" id="app-cname" class="form-control"
     %span.help-block CAREFUL! If this changes, installed apps could stop functioning
   App.FormGroup
-    label.control-label.block for="app-icon" Icon
+    label.control-label.block Icon
     img.app-app-icon src=appleMediumIcon
     span.fileinput-button.btn.btn-default
       | Upload
