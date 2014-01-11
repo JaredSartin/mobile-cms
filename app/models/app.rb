@@ -22,11 +22,6 @@ class App < ActiveRecord::Base
     },
   }
   validates_attachment :icon, {size: {in: 0..3.megabytes}}
-  before_post_process :skip_for_test
-
-  def skip_for_test
-    !Rails.env.test?
-  end
 
   validates :name, :shortname, :user, presence: true
   validates :shortname, uniqueness: true
