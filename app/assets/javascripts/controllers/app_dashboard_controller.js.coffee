@@ -3,11 +3,10 @@ App.AppDashboardController = Ember.ObjectController.extend
     cids = "#{changedId}"
     app = @get 'model'
     unassigned = indexes.unassigned
-    if cids in indexes.homepage
-      @store.find('page', cids).then (p) ->
-        app.set('homepage', p).save()
+    homepage = indexes.homepage
     delete indexes.homepage
     delete indexes.unassigned
+    proms = []
     app.get('pages').forEach (p) =>
       prom = []
       pId = p.get('id')
@@ -18,8 +17,13 @@ App.AppDashboardController = Ember.ObjectController.extend
           prom.push p.set('parent', parent)
           prom.push p.set('order', children.indexOf(pId))
 
-      Ember.RSVP.all(prom).then =>
+      proms.push Ember.RSVP.all(prom).then =>
         p.save()
+
+    Ember.RSVP.all(proms).then =>
+      if cids in homepage
+        @store.find('page', cids).then (p) ->
+          app.set('homepage', p).save()
 
   unassignedPages: (->
     hid = @get('homepage.id')
