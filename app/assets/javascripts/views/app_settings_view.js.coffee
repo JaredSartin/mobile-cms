@@ -10,8 +10,11 @@ App.AppSettingsView = Ember.View.extend
         Pace.stop()
       done: (e, data) =>
         iconTypes = ['appleSmallestIcon', 'appleSmallIcon', 'appleMediumIcon', 'appleLargeIcon', 'androidIcon']
+        Pace.options.ghostTime = 3000
+        Pace.restart()
         for iconType in iconTypes
           @controller.set(iconType, data.response().result.app[iconType.underscore()])
     )
 
   willDestroyElement: ->
+    $('#app-icon').fileupload('destroy')

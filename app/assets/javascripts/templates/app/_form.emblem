@@ -12,9 +12,11 @@ form role="form"
     Ember.TextField valueBinding="cname" id="app-cname" class="form-control"
     %span.help-block CAREFUL! If this changes, installed apps could stop functioning
   App.FormGroup
-    img.app-app-icon.pull-right src=appleMediumIcon
-    label.control-label for="app-icon" Icon
-    input#app-icon type='file' accept="image/gif, image/png, image/x-png" name="icon"
+    label.control-label.block for="app-icon" Icon
+    img.app-app-icon src=appleMediumIcon
+    span.fileinput-button.btn.btn-default
+      | Upload
+      input#app-icon. type='file' accept="image/gif, image/png, image/x-png" name="icon"
     %span.help-block Must be at least 512px by 512px and gif or png
     
   App.FormGroup 
