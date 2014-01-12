@@ -5,8 +5,6 @@ class App < ActiveRecord::Base
 
   has_attached_file :icon, {
     default_url: "/assets/:attachment/placeholder/:style/icon.png",
-    path: ":rails_root/public/assets/:attachment/:id/:style/:basename.:extension",
-    url: "/assets/:attachment/:id/:style/:basename.:extension",
     styles: {
       apple_smallest: ["60x60#", :png], 
       apple_small: ["76x76#", :png], 

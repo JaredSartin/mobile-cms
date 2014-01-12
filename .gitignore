@@ -15,6 +15,9 @@
 /log/*.log
 /tmp
 
+public/system/*
+public/tmp/*
+
 public/assets/*
 !public/assets/icons/
 
