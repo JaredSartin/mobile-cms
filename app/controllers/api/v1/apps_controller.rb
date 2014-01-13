@@ -11,7 +11,19 @@ module Api
       # end
       
       def index
-        @apps = App.where(shortname: params[:shortname])
+        finder = {}
+        finder[:shortname] = params[:shortname]
+
+        host = request.host
+        host_match = host.match(/publicizr.com/)
+        host_match = host.match(/example|127.0.0.1/) if Rails.env.test?
+        finder[:cname] = host unless !!host_match
+
+        puts "=================="
+        puts host
+        puts "=================="
+
+        @apps = App.where(finder)
         render json: @apps, each_serializer: AppSerializer
       end
 

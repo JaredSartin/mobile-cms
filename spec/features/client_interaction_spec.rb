@@ -29,8 +29,38 @@ feature 'Client viewing the app' do
     page.should have_content(pages[:page2].body)
   end
 
-  scenario 'can access the app via 3rd party url only'
-  scenario 'can access the app via 3rd party url and shortname'
+  scenario 'can access the app via 3rd party url and shortname' do
+    Capybara.default_host = "foobar.com"
+    pages = build_hope_app
+    pages[:app].cname = "foobar.com"
+    pages[:app].save
+
+    visit client_app(pages[:app])
+    page.should have_content pages[:homepage].body
+  end
+
+  # DO NOT KNOW HOW TO TEST
+  # Cant' figure out a way to set the headers properly
+  # to pretend the app is being accessed from a forwarded header
+  # scenario 'canot access the app via 3rd party url and shortname if they do not match' do
+  #   pages = build_hope_app
+  #   pages[:app].cname = "bazzork.com"
+  #   pages[:app].save
+
+  #   visit client_app(pages[:app])
+  #   sleep 2
+  #   page.should_not have_content pages[:homepage].body
+  # end
+
+  scenario 'can still access the app when a 3rd party url and shortname is set' do
+    pages = build_hope_app
+    pages[:app].cname = "foobar.com"
+    pages[:app].save
+
+    visit client_app(pages[:app])
+    page.should have_content pages[:homepage].body
+  end
+
   scenario 'sees the marketing page when the app cannot be found'
   scenario 'sees a coming soon page when no homepage is set'
   scenario 'sees an app listing on the main url when access by custom url and no apps at root'

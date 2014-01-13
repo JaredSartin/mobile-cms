@@ -34,7 +34,41 @@ describe "App API", type: :api do
       app_json["shortname"].should == app_model.shortname
     end
 
-    it "returns errors when no app found by shortname"
+    it "looks up the app based on the shortname and domain" do
+      hosted_app = Fabricate(:app, cname: 'foobar.com', shortname: 'davenport')
+
+      get api_apps_path, {shortname: 'davenport'}, {'HTTP_HOST' => 'foobar.com'}
+
+      last_response.status.should == 200
+
+      apps = get_json_object("apps")
+      apps.length.should == 1
+      app_json = apps[0]
+
+      app_json = apps.first
+      app_json["id"].should == hosted_app.id
+      app_json["name"].should == hosted_app.name
+      app_json["cname"].should == hosted_app.cname
+      app_json["shortname"].should == hosted_app.shortname
+    end
+
+    it "returns errors when no app found by shortname" do
+      get api_apps_path, shortname: 'calvin'
+
+      last_response.status.should == 200
+
+      apps = get_json_object("apps")
+      apps.length.should == 0
+    end
+
+    it "returns errors when no app found by shortname and domain" do
+      hosted_app = Fabricate(:app, cname: 'foobar.com', shortname: 'davenport')
+
+      get api_apps_path, {shortname: 'davenport'}, {'HTTP_HOST' => 'bazzork.com'}
+
+      apps = get_json_object("apps")
+      apps.length.should == 0
+    end
 
     it "gives the apps' pages" do
       page1 = Fabricate(:page, app_id: app_model.id)
