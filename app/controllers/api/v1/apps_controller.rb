@@ -47,7 +47,7 @@ module Api
 
       private
       def app_params
-        params.require(:app).permit(:name, :cname, :shortname, :homepage_id)
+        params.require(:app).permit(:name, :cname, :shortname, :homepage_id, :ga_key)
       end
     end
   end

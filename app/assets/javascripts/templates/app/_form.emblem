@@ -12,6 +12,10 @@ form role="form"
     Ember.TextField valueBinding="cname" id="app-cname" class="form-control"
     %span.help-block CAREFUL! If this changes, installed apps could stop functioning
   App.FormGroup
+    label.control-label for="app-ga" Google Analytics ID
+    Ember.TextField valueBinding="gaKey" id="app-ga" class="form-control"
+    %span.help-block In form of: UA-xxxxxxx-xx
+  App.FormGroup
     label.control-label.block Icon
     img.app-app-icon src=appleMediumIcon
     span.fileinput-button.btn.btn-default

@@ -3,6 +3,7 @@ App.App = DS.Model.extend
   name: DS.attr 'string'
   shortname: DS.attr 'string'
   cname: DS.attr 'string'
+  gaKey: DS.attr 'string'
   homepage: DS.belongsTo 'page', async: true
   pages: DS.hasMany 'page', async: true
   appleSmallestIcon: DS.attr 'string'

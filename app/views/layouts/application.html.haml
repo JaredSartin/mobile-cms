@@ -17,15 +17,29 @@
       %link#app-apple-icon-large{href: @app.icon.url(:apple_large), rel: "apple-touch-icon", sizes: "152x152"}
       %link#app-android-icon{href: @app.icon.url(:android), rel: "shortcut icon", sizes: "196x196"}
     - else
-      %link#app-apple-icon-smallest{href: "/images/icons/placeholder/apple_smallest/icon.png", rel: "apple-touch-icon"}
-      %link#app-apple-icon-small{href: "/images/icons/placeholder/apple_small/icon.png", rel: "apple-touch-icon", sizes: "76x76"}
-      %link#app-apple-icon-medium{href: "/images/icons/placeholder/apple_medium/icon.png", rel: "apple-touch-icon", sizes: "120x120"}
-      %link#app-apple-icon-large{href: "/images/icons/placeholder/apple_large/icon.png", rel: "apple-touch-icon", sizes: "152x152"}
-      %link#app-android-icon{href: "/images/icons/placeholder/android/icon.png", rel: "shortcut icon", sizes: "196x196"}
+      %link#app-apple-icon-smallest{href: "/assets/icons/placeholder/apple_smallest/icon.png", rel: "apple-touch-icon"}
+      %link#app-apple-icon-small{href: "/assets/icons/placeholder/apple_small/icon.png", rel: "apple-touch-icon", sizes: "76x76"}
+      %link#app-apple-icon-medium{href: "/assets/icons/placeholder/apple_medium/icon.png", rel: "apple-touch-icon", sizes: "120x120"}
+      %link#app-apple-icon-large{href: "/assets/icons/placeholder/apple_large/icon.png", rel: "apple-touch-icon", sizes: "152x152"}
+      %link#app-android-icon{href: "/assets/icons/placeholder/android/icon.png", rel: "shortcut icon", sizes: "196x196"}
     = csrf_meta_tags
 %body
   = yield
 - if Rails.env.production?
-  %script{src: "//static.getclicky.com/js", type: "text/javascript"}
-    :javascript
-      try{ clicky.init(100692988); }catch(e){}
+  :javascript
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-3860852-22');
+    ga('send', 'pageview');
+- if @app and @app.ga_key
+  :javascript
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', "#{@app.ga_key}");
+    ga('send', 'pageview');

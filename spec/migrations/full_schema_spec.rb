@@ -25,6 +25,7 @@ describe "full schema spec" do
         t.column :name, :string
         t.column :shortname, :string
         t.column :cname, :string
+        t.column :ga_key, :string
         t.column :icon_content_type, :string
         t.column :icon_file_name, :string
         t.column :icon_file_size, :integer
