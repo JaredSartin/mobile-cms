@@ -61,7 +61,12 @@ feature 'Client viewing the app' do
     page.should have_content pages[:homepage].body
   end
 
-  scenario 'sees the marketing page when the app cannot be found'
+  scenario 'sees a not found page on improper app lookup' do
+    visit '/not_an_app'
+
+    page.should have_content "Oops! There seems to be a problem"
+  end
+
   scenario 'sees a coming soon page when no homepage is set'
   scenario 'sees an app listing on the main url when access by custom url and no apps at root'
 end
