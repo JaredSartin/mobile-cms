@@ -25,3 +25,7 @@
     = csrf_meta_tags
 %body
   = yield
+- if Rails.env.production?
+  %script{src: "//static.getclicky.com/js", type: "text/javascript"}
+    :javascript
+      try{ clicky.init(100692988); }catch(e){}
