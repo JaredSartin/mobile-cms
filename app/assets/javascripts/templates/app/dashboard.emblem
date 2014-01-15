@@ -1,12 +1,26 @@
-linkTo 'pages.new' class='app-add-page btn btn-default' | Add New Page
-linkTo 'app.settings' this class='app-edit-app btn btn-default pull-right' | Edit App
+.panel.panel-default
+  .panel-body
+    h3 
+      | #{name}
+      link-to 'app.settings' this class='app-edit-app btn btn-default pull-right' | Edit App
+    hr
+    h5 Printable QR Codes
+    App.QRCodeView shortname=shortname
+    if cname
+      App.QRCodeView shortname=shortname cname=cname
+
+h4
+  | Manage Pages
+  link-to 'pages.new' class='app-add-page btn btn-success btn-xs pull-right' | Add New Page
 hr
 ul.app-homepage.app-pages.page-list
   if homepage
     with homepage
       partial 'page/dashboard_list'
 h4 Unassigned Pages
+hr
 ul.app-unassigned-pages.app-pages.page-list
   each unassignedPages
-    unless parent
-      partial 'page/dashboard_list'
+    partial 'page/dashboard_list'
+  else
+    p All pages have been assigned.

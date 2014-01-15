@@ -36,6 +36,6 @@ feature 'General Navigation' do
     
     page.find('a', text: 'Hope').click
 
-    page.should have_content "Manage Hope"
+    page.should have_content "Printable QR"
   end
 end

@@ -27,6 +27,9 @@ App.AppDashboardController = Ember.ObjectController.extend
 
   unassignedPages: (->
     hid = @get('homepage.id')
-    @get('pages').toArray().reject (p) =>
+    pages = @get('pages').toArray()
+    pages = pages.reject (p) =>
       p.get('id') == hid
-  ).property('pages.@each', 'homepage.id')
+    pages.reject (p) =>
+      !!p.get('parent')
+  ).property('pages.@each.id', 'pages.@each.parent', 'homepage.id')

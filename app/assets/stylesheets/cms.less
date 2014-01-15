@@ -2,6 +2,7 @@
 
 .container {
   margin-top: 65px;
+  margin-bottom: 65px;
 }
 
 .page-drag-placeholder {
@@ -65,6 +66,11 @@
   }
 }
 
+.qr-printable img {
+  width: 150px;
+  height: auto;
+}
+
 // Edit form //
 #page-body {
   height: 200px;
@@ -87,4 +93,21 @@
 // Misc //
 .block {
   display: block;
+}
+
+// Nav //
+.navbar.centered {
+  text-align: center;
+  .navbar-header {
+    float: none;
+    .navbar-brand {
+      position: relative;
+      top: 15px;
+      float: none;
+    }
+    .navbar-toggle {
+      margin-left: 10px;
+      margin-right: -51px;
+    }
+  }
 }

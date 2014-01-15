@@ -1,10 +1,10 @@
 .col-sm-9.pull-right.app-main-content
+  h3.text-center
+    if parent
+      linkTo 'client.page' parent class="app-back btn btn-default btn-xs pull-left"  | &larr; Back
+    | #{title}
   == body
 .col-sm-3
-  if parent
-    ul.nav.nav-pills.nav-stacked.side-nav
-      li
-        linkTo 'client.page' parent class="app-back"  | &larr; Back
   if children
     ul.nav.nav-pills.nav-stacked.side-nav
       each sortedChildren
