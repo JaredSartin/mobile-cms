@@ -1,3 +1,4 @@
-h2 Edit Page
-a.app-delete-page{action delete this} href='#' Delete
+h2
+  | Edit Page
+  a.btn.btn-danger.pull-right.app-delete-page{action delete this} href='#' Delete
 partial 'page/form'

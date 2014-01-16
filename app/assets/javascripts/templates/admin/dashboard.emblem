@@ -1,5 +1,6 @@
+h3 Manage Apps
 if apps
   each apps
     partial 'app/preview'
 else
-  p You have no applications, you should create one.
+  p You have no applications, use the contact form below to have us set one up for you!

@@ -5,9 +5,9 @@
       link-to 'app.settings' this class='app-edit-app btn btn-default pull-right' | Edit App
     hr
     h5 Printable QR Codes
-    App.QRCodeView shortname=shortname
+    App.QRCodeView classNames="col-sm-6" shortname=shortname
     if cname
-      App.QRCodeView shortname=shortname cname=cname
+      App.QRCodeView classNames="col-sm-6" shortname=shortname cname=cname
 
 h4
   | Manage Pages

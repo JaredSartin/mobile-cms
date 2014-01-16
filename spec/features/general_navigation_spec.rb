@@ -15,7 +15,7 @@ feature 'General Navigation' do
     visit '/admin'
 
     page.should have_content "Publicizr"
-    page.should have_content "You have no applications, you should create one."
+    page.should have_content "You have no applications, use the contact form below to have us set one up for you!"
   end
 
   scenario 'as a logged in account holder I should be able to see the main dashboard' do
@@ -24,8 +24,8 @@ feature 'General Navigation' do
 
     sign_in_as amy
     visit '/admin'
-    page.should have_selector 'a', text: 'Hope'
-    page.should have_selector 'a', text: 'Chadron State'
+    page.should have_selector 'h4', text: 'Hope'
+    page.should have_selector 'h4', text: 'Chadron State'
   end
 
   scenario 'as a logged in account holder I should be able to see the specific app dashboard' do
@@ -34,7 +34,7 @@ feature 'General Navigation' do
     sign_in_as amy
     visit '/admin'
     
-    page.find('a', text: 'Hope').click
+    page.find('a', text: 'Manage').click
 
     page.should have_content "Printable QR"
   end

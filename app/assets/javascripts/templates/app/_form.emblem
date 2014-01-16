@@ -1,28 +1,32 @@
 form role="form"
-  input type="hidden" name="app_id" value=id
-  App.FormGroup
-    label.control-label for="app-name" Name
-    Ember.TextField valueBinding="name" id="app-name" class="form-control"
-  App.FormGroup
-    label.control-label for="app-shortname" Subdomain
-    Ember.TextField valueBinding="shortname" id="app-shortname" class="form-control"
-    %span.help-block CAREFUL! If this changes, installed apps could stop functioning
-  App.FormGroup
-    label.control-label for="app-cname" CName
-    Ember.TextField valueBinding="cname" id="app-cname" class="form-control"
-    %span.help-block CAREFUL! If this changes, installed apps could stop functioning
-  App.FormGroup
-    label.control-label for="app-ga" Google Analytics ID
-    Ember.TextField valueBinding="gaKey" id="app-ga" class="form-control"
-    %span.help-block In form of: UA-xxxxxxx-xx
-  App.FormGroup
-    label.control-label.block Icon
-    img.app-app-icon src=appleMediumIcon
-    span.fileinput-button.btn.btn-default
-      | Upload
-      input#app-icon. type='file' accept="image/gif, image/png, image/x-png" name="icon"
-    %span.help-block Must be at least 512px by 512px and gif or png
-    
-  App.FormGroup 
-    button.btn.btn-info.app-save{action save this} Save
-    button.btn.btn-link.app-link{action cancel} Cancel
+  .row
+    .col-sm-6
+      input type="hidden" name="app_id" value=id
+      App.FormGroup
+        label.control-label for="app-name" Name
+        Ember.TextField valueBinding="name" id="app-name" class="form-control"
+      .panel.panel-danger
+        .panel-heading CAREFUL! Changing these could break installed apps
+        .panel-body
+          App.FormGroup
+            label.control-label for="app-shortname" Subdomain
+            Ember.TextField valueBinding="shortname" id="app-shortname" class="form-control"
+          App.FormGroup
+            label.control-label for="app-cname" CName
+            Ember.TextField valueBinding="cname" id="app-cname" class="form-control"
+    .col-sm-6
+      App.FormGroup
+        label.control-label for="app-ga" Google Analytics ID
+        Ember.TextField valueBinding="gaKey" id="app-ga" class="form-control"
+        %span.help-block In form of: UA-xxxxxxx-xx
+      App.FormGroup
+        label.control-label.block Icon
+        img.app-app-icon src=appleMediumIcon
+        span.fileinput-button.btn.btn-default
+          | Upload
+          input#app-icon. type='file' accept="image/gif, image/png, image/x-png" name="icon"
+        %span.help-block Must be at least 256px by 256px gif or png 
+  .row
+    App.FormGroup 
+      button.btn.btn-info.app-save{action save this} Save
+      button.btn.btn-link.app-link{action cancel} Cancel

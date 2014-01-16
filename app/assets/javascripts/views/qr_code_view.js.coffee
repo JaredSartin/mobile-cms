@@ -1,5 +1,5 @@
 App.QRCodeView = Ember.View.extend
-  classNames: ['col-sm-6', 'qr-printable', 'text-center']
+  classNames: ['qr-printable', 'text-center']
   didInsertElement: ->
     @$('.link-qr-code').qrcode
       text: @get('url')

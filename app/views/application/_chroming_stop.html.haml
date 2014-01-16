@@ -1,0 +1,11 @@
+</div>
+.flashes
+  - if flash[:notice]
+    .alert.alert-success= flash[:notice]
+  - if flash[:warning]
+    .alert.alert-warning= flash[:warning]
+  - if flash[:alert]
+    .alert.alert-danger= flash[:alert]
+  - if flash[:error]
+    .alert.alert-danger= flash[:error]
+<script type='text/javascript'>(function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://www.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({ c: '3e606691-8c52-445d-82a9-a07afb941894', f: true }); done = true; } }; })();</script>

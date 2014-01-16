@@ -1,1 +1,10 @@
-linkTo 'app.dashboard' this | #{name}
+.panel.panel-default.app-preview
+  .panel-body
+    img.pull-left src=appleMediumIcon
+    if cname
+      App.QRCodeView classNames="pull-right" shortname=shortname cname=cname
+    else
+      App.QRCodeView classNames="pull-right" shortname=shortname
+    h4 #{name}
+    p #{pages.length} pages
+    link-to 'app.dashboard' this class="btn btn-success" | Manage

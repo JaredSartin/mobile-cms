@@ -19,7 +19,7 @@ class App < ActiveRecord::Base
       apple_large: "-background white -flatten",
     },
   }
-  validates_attachment :icon, {size: {in: 0..3.megabytes}}
+  validates_attachment :icon, {size: {in: 0..2.megabytes}}
 
   validates :name, :shortname, :user, presence: true
   validates :shortname, uniqueness: true

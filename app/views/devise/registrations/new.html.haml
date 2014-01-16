@@ -1,27 +1,28 @@
-%h2= t('devise.registrations.new.header')
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = devise_error_messages!
+= render 'chroming_start'
+.col-md-4
+  %h2 Sign up
+  = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+    = devise_error_messages!
+    .form-group
+      = f.label :first_name
+      = f.text_field :first_name, autofocus: true, class: "form-control"
 
-  = f.label :first_name
-  %br
-  = f.text_field :first_name, autofocus: true
+    .form-group
+      = f.label :last_name
+      = f.text_field :last_name, class: "form-control"
 
-  = f.label :last_name
-  %br
-  = f.text_field :last_name
+    .form-group
+      = f.label :email
+      = f.email_field :email, class: "form-control"
 
-  = f.label :email
-  %br
-  = f.email_field :email
+    .form-group
+      = f.label :password
+      = f.password_field :password, class: "form-control"
 
-  = f.label :password
-  %br
-  = f.password_field :password
+    .form-group
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation, class: "form-control"
 
-  = f.label :password_confirmation
-  %br
-  = f.password_field :password_confirmation
-
-  = f.submit t('devise.registrations.new.sign_up')
-
-= render "devise/shared/links"
+    = f.submit "Sign up", class: "btn btn-primary"
+  = render "devise/shared/links"
+= render 'chroming_stop'
