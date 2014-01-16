@@ -9,6 +9,7 @@ App.AppSettingsView = Ember.View.extend
       stop: =>
         Pace.stop()
       done: (e, data) =>
+        @Flash.set('success', "Icon has been changed!")
         iconTypes = ['appleSmallestIcon', 'appleSmallIcon', 'appleMediumIcon', 'appleLargeIcon', 'androidIcon']
         Pace.options.ghostTime = 3000
         Pace.restart()

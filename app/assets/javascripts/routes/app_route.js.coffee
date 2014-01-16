@@ -7,7 +7,8 @@ App.AppSettingsRoute = Ember.Route.extend
   actions:
     save: (app) ->
       app.save().then =>
+        @Flash.set('success', 'Settings have been saved!')
         @controller.transitionToRoute 'app.dashboard', app
       , =>
-    cancel: (app) ->
-      console.log "UNDO ALL THE THINGS!"
+    cancel: ->
+      @controller.transitionToRoute 'app.dashboard', @modelFor('app')

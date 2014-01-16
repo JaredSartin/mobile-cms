@@ -7,3 +7,4 @@ form role="form"
     Ember.TextArea valueBinding="body" id="page-body" class="form-control app-page-body"
   App.FormGroup 
     button.btn.btn-info.app-save{action save this} Save
+    button.btn.btn-link.app-cancel{action cancel} Cancel

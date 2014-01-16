@@ -1,6 +1,6 @@
 nav.navbar.navbar-fixed-top.navbar-inverse
   .navbar-header
-    a.navbar-brand
+    link-to 'admin.dashboard' class="navbar-brand"
       | Publicizr
       span.small (Beta)
 .container

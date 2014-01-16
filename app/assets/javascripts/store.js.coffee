@@ -4,6 +4,16 @@ DS.RESTAdapter.reopen
 
 App.Store = DS.Store.extend
   adapter: '_ams'
+  recordsToReset: []
+  dataWasUpdated: (type, record) ->
+    @get('recordsToReset').pushObject record
+  resetDirtyRecords: ->
+    @get('recordsToReset').forEach (record) ->
+      if record.get('isDirty')
+        record.rollback()
+    @set('recordsToReset', [])
+  hasDirtyRecords: ->
+    !!@get('recordsToReset').findBy('isDirty', true)
 
 DS.Store.reopen
   properDeleteChild: (model, callback) ->

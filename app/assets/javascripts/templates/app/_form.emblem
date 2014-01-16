@@ -25,3 +25,4 @@ form role="form"
     
   App.FormGroup 
     button.btn.btn-info.app-save{action save this} Save
+    button.btn.btn-link.app-link{action cancel} Cancel
