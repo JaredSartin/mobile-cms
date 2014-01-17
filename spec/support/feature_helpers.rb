@@ -1,6 +1,7 @@
 module FeatureHelpers
   def visit_admin_app(app)
     visit "/admin/app/#{app.id}"
+    sleep 1
   end
 
   def sign_in_as(user)

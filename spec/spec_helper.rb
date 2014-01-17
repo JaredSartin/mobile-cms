@@ -71,6 +71,6 @@ end
 
 # Register slightly larger than default window size...
 Capybara.register_driver :poltergeist do |app|
-  Capybara::Poltergeist::Driver.new(app, {phantomjs_logger: '/dev/null', js_errors: false})
+  Capybara::Poltergeist::Driver.new(app, {phantomjs_logger: '/dev/null', js_errors: false, inspector: true})
 end
 Capybara.javascript_driver = :poltergeist
