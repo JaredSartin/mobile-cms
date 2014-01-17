@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 # Core
 gem 'rails', '4.0.2'
 gem 'mysql2', '0.3.13'
+gem 'airbrake', '3.1.15'
 
 # Front end client
 gem 'ember-rails', '0.14.1'
@@ -63,8 +64,4 @@ group :test do
   gem 'shoulda-matchers', '2.4.0'
   gem 'database_cleaner', '1.2.0'
   gem 'fire_poll', '1.2.0'
-end
-
-group :production do
-  gem 'airbrake', '3.1.15'
 end

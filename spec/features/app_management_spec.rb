@@ -9,6 +9,8 @@ feature 'App Management' do
 
     page.find('.app-edit-app').click
 
+    binding.pry
+
     fill_in "Name", with: "Blunderbuss"
 
     page.find('.app-save').click
