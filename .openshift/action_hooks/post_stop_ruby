@@ -12,3 +12,7 @@
 # prevent your application from stopping cleanly or starting at all.
 # Application start and stop is subject to different timeouts
 # throughout the system.
+
+echo "****************************"
+echo "Running post stop ruby hooks"
+echo "****************************"

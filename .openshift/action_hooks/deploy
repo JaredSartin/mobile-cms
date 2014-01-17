@@ -4,6 +4,10 @@
 # up again.  This script gets executed directly, so it could be python, php,
 # ruby, etc.
 
+echo "********************"
+echo "Running deploy hooks"
+echo "********************"
+
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
 set -e
