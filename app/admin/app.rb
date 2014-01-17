@@ -1,7 +1,7 @@
 ActiveAdmin.register App do
   index do
     column :name
-    column :user do
+    column :user do |user|
       "#{user.name} (#{user.email})"
     end
     column :shortname
