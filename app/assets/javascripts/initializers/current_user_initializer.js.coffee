@@ -7,3 +7,4 @@ Ember.Application.initializer
       user = store.find('user', user_id)
       container.register('user:current', user, instantiate: false)
       container.injection('route', 'currentUser', 'user:current')
+      container.injection('controller', 'currentUser', 'user:current')

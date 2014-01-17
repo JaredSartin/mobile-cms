@@ -1,0 +1,11 @@
+br
+br
+.splash.text-center
+  .icon
+  p Publicizr - Get your company mobile!
+  p
+    b Coming soon
+  p
+    a href="mailto:info@publicizr.com" info@publicizr.com
+    |  | 
+    a href="http://twitter.com/publicizr" @publicizr

@@ -10,14 +10,20 @@
       App.QRCodeView classNames="col-sm-6" shortname=shortname cname=cname
 
 h4
-  | Manage Pages
   link-to 'pages.new' class='app-add-page btn btn-success btn-xs pull-right' | Add New Page
+  | Manage Pages 
+  .small (Drag pages to reorder)
 hr
 ul.app-homepage.app-pages.page-list
   if homepage
     with homepage
       partial 'page/dashboard_list'
-h4 Unassigned Pages
+  else
+    .alert.alert-warning No home page has been assigned - drag a page here that users will see when they visit your app.
+br
+h4
+  | Unassigned Pages
+  .small (These cannot be viewed by your users! Drag above to show them.)
 hr
 ul.app-unassigned-pages.app-pages.page-list
   each unassignedPages

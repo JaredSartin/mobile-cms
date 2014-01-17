@@ -3,6 +3,18 @@ nav.navbar.navbar-fixed-top.navbar-inverse
     link-to 'admin.dashboard' class="navbar-brand"
       | Publicizr
       span.small (Beta)
+  if currentUser
+    ul.nav.navbar-nav.navbar-right
+      li.dropdown
+        a href="#" class="dropdown-toggle" data-toggle="dropdown"
+          | #{currentUser.email}
+          b class="caret"
+        ul class="dropdown-menu"
+          li
+            link-to 'admin.dashboard' | My Apps
+          li role="presentation" class="divider"
+          li
+            a href="/users/sign_out" Log Out
 .container
   if email
     outlet
