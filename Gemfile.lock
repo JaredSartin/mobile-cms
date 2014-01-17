@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: 5d42ac73703a7e8486c827629815bd8679793684
+  revision: f381f220219061ee11e65132d2a06bf73007bb8e
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0)
@@ -11,16 +11,16 @@ GIT
       inherited_resources (~> 1.3)
       jquery-rails
       jquery-ui-rails
-      kaminari (~> 0.14)
+      kaminari (~> 0.15)
       rails (>= 3.2, < 4.1)
       ransack (~> 1.0)
       sass-rails
 
 GIT
   remote: git://github.com/rails-api/rails-api.git
-  revision: 7bd62654d48e68a0e0f3d33cb20aab5e58f677e2
+  revision: 07da3cb613836b118747d6a019fa428ce7f5f8e5
   specs:
-    rails-api (0.1.0)
+    rails-api (0.2.0)
       actionpack (>= 3.2.11)
       railties (>= 3.2.11)
 
@@ -131,7 +131,7 @@ GEM
     emblem-rails (0.2.0)
       barber-emblem (~> 0.1.1)
       ember-rails (>= 0.14.0)
-    emblem-source (0.3.5)
+    emblem-source (0.3.11)
     erubis (2.7.0)
     execjs (2.0.2)
     fabrication (2.9.0)
@@ -162,7 +162,7 @@ GEM
     jquery-ui-rails (4.1.1)
       railties (>= 3.1.0)
     json (1.8.1)
-    kaminari (0.15.0)
+    kaminari (0.15.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     launchy (2.3.0)
@@ -174,7 +174,6 @@ GEM
       less (~> 2.4.0)
     less-rails-bootstrap (3.0.6)
       less-rails (~> 2.4.2)
-    libv8 (3.16.14.3)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -182,7 +181,7 @@ GEM
     mime-types (1.25.1)
     mini_portile (0.5.2)
     minitest (4.7.5)
-    multi_json (1.8.2)
+    multi_json (1.8.4)
     mysql2 (0.3.13)
     newrelic_rpm (3.7.1.182)
     nokogiri (1.6.1)
@@ -231,7 +230,6 @@ GEM
       actionpack (>= 3.0)
       activerecord (>= 3.0)
       polyamorous (~> 0.6.0)
-    ref (1.0.5)
     responders (1.0.0)
       railties (>= 3.2, < 5)
     rspec-core (2.14.7)
@@ -262,9 +260,6 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
-    therubyracer (0.12.0)
-      libv8 (~> 3.16.14.0)
-      ref
     thor (0.18.1)
     thread_safe (0.1.3)
       atomic
@@ -325,5 +320,4 @@ DEPENDENCIES
   rails-api!
   rspec-rails (= 2.14.0)
   shoulda-matchers (= 2.4.0)
-  therubyracer (= 0.12.0)
   uglifier (= 2.3.0)

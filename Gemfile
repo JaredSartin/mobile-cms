@@ -9,7 +9,6 @@ gem 'ember-rails', '0.14.1'
 gem 'ember-source', '1.1.2'
 gem 'emblem-rails', '0.2.0'
 
-gem 'therubyracer', '0.12.0'
 gem "less-rails", "2.4.2"
 gem "less-rails-bootstrap", "3.0.6"
 gem 'bootstrap-wysihtml5-rails', '0.3.1.23', require: "bootstrap-wysihtml5-rails"
