@@ -50,10 +50,6 @@ group :development, :test do
   gem 'pry-remote', '0.1.7'
   gem 'fabrication', '2.9.0'
   gem 'faker', '1.2.0'
-  # Use Capistrano for deployment
-  # gem 'capistrano', '2.15.4'
-  # gem 'capistrano-ext'
-  # gem 'caplock'
 end
 
 group :test do
@@ -64,4 +60,5 @@ group :test do
   gem 'shoulda-matchers', '2.4.0'
   gem 'database_cleaner', '1.2.0'
   gem 'fire_poll', '1.2.0'
+  gem 'timecop', '0.7.1'
 end
