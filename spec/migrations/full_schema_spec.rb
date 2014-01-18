@@ -35,7 +35,7 @@ describe "full schema spec" do
         t.column :created_at, :datetime
         t.column :updated_at, :datetime
         t.index :shortname, name: 'index_apps_on_shortname', unique: true
-        t.index :cname, name: 'index_apps_on_cname', unique: true
+        t.index :cname, name: 'index_apps_on_cname'
       end
 
       s.table :pages do |t|

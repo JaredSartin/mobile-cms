@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140114053015) do
+ActiveRecord::Schema.define(version: 20140117235645) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20140114053015) do
     t.string   "ga_key"
   end
 
-  add_index "apps", ["cname"], name: "index_apps_on_cname", unique: true, using: :btree
+  add_index "apps", ["cname"], name: "index_apps_on_cname", using: :btree
   add_index "apps", ["shortname"], name: "index_apps_on_shortname", unique: true, using: :btree
 
   create_table "pages", force: true do |t|
