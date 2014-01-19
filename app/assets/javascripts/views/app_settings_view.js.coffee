@@ -4,14 +4,15 @@ App.AppSettingsView = Ember.View.extend
       dataType: 'json'
       url: "/api/apps/#{@controller.get('id')}/icon"
       start: =>
-        Pace.options.ghostTime = 3000
+        @Flash.set('notice', "Uploading, please wait...")
+        Pace.options.ghostTime = 5000
         Pace.restart()
       stop: =>
         Pace.stop()
       done: (e, data) =>
-        @Flash.set('success', "Icon has been changed!")
+        @Flash.set('success', "Icon has been updated!")
         iconTypes = ['appleSmallestIcon', 'appleSmallIcon', 'appleMediumIcon', 'appleLargeIcon', 'androidIcon']
-        Pace.options.ghostTime = 3000
+        Pace.options.ghostTime = 5000
         Pace.restart()
         for iconType in iconTypes
           @controller.set(iconType, data.response().result.app[iconType.underscore()])

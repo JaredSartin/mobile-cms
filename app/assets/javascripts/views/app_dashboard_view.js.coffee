@@ -31,7 +31,7 @@ App.AppDashboardView = Ember.View.extend
           controller.changePageOrder sort_id, indexes
       )
     , 300
-  ).observes('controller.pages.@each')
+  ).observes('controller.pages.@each.isLoaded')
 
   _getPages: (sel) ->
     #thinks sel is not a sortable?

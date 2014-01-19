@@ -16,7 +16,7 @@ App.Page = DS.Model.extend
       @set('startDate', '')
 
     current = @get('startDate')
-    if moment(current).isValid()
+    if !Ember.isEmpty(current) and moment(current).isValid()
       moment(current).format('L')
     else
       ""
@@ -29,7 +29,7 @@ App.Page = DS.Model.extend
       @set('endDate', '')
 
     current = @get('endDate')
-    if moment(current).isValid()
+    if !Ember.isEmpty(current) and moment(current).isValid()
       moment(current).format('L')
     else
       ""

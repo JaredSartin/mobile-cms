@@ -10,7 +10,7 @@
       App.QRCodeView classNames="col-sm-6" shortname=shortname cname=cname
 
 h4
-  link-to 'pages.new' class='app-add-page btn btn-success btn-xs pull-right' | Add New Page
+  link-to 'pages.new' class='app-add-page btn btn-success pull-right' | Add New Page
   | Manage Pages 
   .small (Drag pages to reorder)
 hr
