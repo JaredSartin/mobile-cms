@@ -25,7 +25,7 @@ feature 'Page Management' do
     page.find('.app-add-page').click
 
     fill_in "Title", with: "Da first"
-    fill_in "Content", with: "I am da first!!"
+    # fill_in "Content", with: "I am da first!!"
 
     page.first('.app-save').click
 
@@ -71,6 +71,69 @@ feature 'Page Management' do
     within '.app-unassigned-pages' do
       page.should_not have_content "Not Dis Won"
     end
+  end
+
+  scenario 'pages can be scheduled' do
+    time = Time.local(2009, 1, 1)
+    Timecop.travel(time)
+
+    hope = Fabricate(:app, user: amy, name: "Hope")
+
+    home = Fabricate(:page, app: hope, title: "Home")
+    nStop = Fabricate(:page, app: hope, title: "No Stop", start_date: "2009-02-15")
+    nStart = Fabricate(:page, app: hope, title: "No Start", end_date: "2009-09-15")
+    windowed = Fabricate(:page, app: hope, title: "Window")
+
+    nStop.parent = home
+    nStop.save
+    nStart.parent = home
+    nStart.save
+    windowed.parent = home
+    windowed.save
+
+    home.reload
+
+    hope.homepage = home
+    hope.save!
+
+    hope.reload
+
+    sign_in_as amy
+    visit_admin_app(hope)
+
+    page.should have_selector('.date-display', text: "Always Displayed")
+    page.should have_selector('.date-display', text: "From: 02/15/2009 (inactive)")
+    page.should have_selector('.date-display', text: "Until: 09/15/2009 (active)")
+
+    page.find(".app-page-#{windowed.id} .app-edit-page").click
+
+    page.execute_script("$('.app-page-start').val('02/15/2009').change()")
+    page.execute_script("$('.app-page-end').val('09/15/2009').change()")
+    page.first('.app-save').click
+
+    sleep 1
+
+    page.should have_selector('.date-display', text: "From: 02/15/2009 (inactive)")
+    page.should have_selector('.date-display', text: "Until: 09/15/2009 (active)")
+    page.should have_selector('.date-display', text: "From: 02/15/2009 Until: 09/15/2009 (inactive)")
+
+    # timecop into window and see statuses
+    time = Time.local(2009, 8, 9)
+    Timecop.travel(time)
+    visit_admin_app(hope)
+
+    page.should have_selector('.date-display', text: "From: 02/15/2009 (active)")
+    page.should have_selector('.date-display', text: "Until: 09/15/2009 (active)")
+    page.should have_selector('.date-display', text: "From: 02/15/2009 Until: 09/15/2009 (active)")
+    
+    # timecop out of window and see statuses
+    time = Time.local(2010, 1, 1)
+    Timecop.travel(time)
+    visit_admin_app(hope)
+
+    page.should have_selector('.date-display', text: "From: 02/15/2009 (active)")
+    page.should have_selector('.date-display', text: "Until: 09/15/2009 (inactive)")
+    page.should have_selector('.date-display', text: "From: 02/15/2009 Until: 09/15/2009 (inactive)")
   end
 
   context 'managing page structure' do

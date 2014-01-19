@@ -1,4 +1,6 @@
 .col-sm-9.pull-right.app-main-content
+  unless active
+    .alert.alert-warning This page is not visible. Only visible #{dateRange}
   h3.text-center
     if parent
       linkTo 'client.page' parent class="app-back btn btn-default btn-xs pull-left"  | &larr; Back

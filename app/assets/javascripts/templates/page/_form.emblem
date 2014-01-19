@@ -1,10 +1,21 @@
-form role="form"
-  App.FormGroup
-    label.control-label for="page-title" Title
-    Ember.TextField valueBinding="title" id="page-title" class="form-control"
-  App.FormGroup
-    label.control-label for="page-body" Content
-    Ember.TextArea valueBinding="body" id="page-body" class="form-control app-page-body"
-  App.FormGroup 
-    button.btn.btn-info.app-save{action save this} Save
-    button.btn.btn-link.app-cancel{action cancel} Cancel
+.row
+  .col-sm-9
+    form role="form"
+      App.FormGroup
+        label.control-label for="page-title" Title
+        Ember.TextField valueBinding="title" id="page-title" class="form-control"
+      App.FormGroup
+        label.control-label for="page-body" Content
+        Ember.TextArea valueBinding="body" id="page-body" class="form-control app-page-body"
+  .col-sm-3
+      App.FormGroup
+        label.control-label for="page-start" Starting
+        Ember.TextField valueBinding="humanStart" id="page-start" class="form-control app-page-start datepicker"
+      App.FormGroup
+        label.control-label for="page-end" Ending
+        Ember.TextField valueBinding="humanEnd" id="page-end" class="form-control app-page-end datepicker"
+.row
+  .col-sm-12
+    App.FormGroup 
+      button.btn.btn-info.app-save{action save this} Save
+      button.btn.btn-link.app-cancel{action cancel} Cancel

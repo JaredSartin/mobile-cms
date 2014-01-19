@@ -3,6 +3,8 @@
 //= require jquery.ui.sortable
 //= require jquery.fileupload
 //= require jquery.qrcode-0.7.0
+//= require moment
+//= require datepicker
 //= require twitter/bootstrap
 //= require bootstrap-wysihtml5/b3
 //= require pace.min

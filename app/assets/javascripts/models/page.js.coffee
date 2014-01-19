@@ -5,6 +5,48 @@ App.Page = DS.Model.extend
   order: DS.attr 'number'
   title: DS.attr 'string'
   body: DS.attr 'string'
+  active: DS.attr 'boolean'
+  startDate: DS.attr 'string'
+  endDate: DS.attr 'string'
+
+  humanStart: ( (k,v) ->
+    if v and moment(v).isValid()
+      @set('startDate', moment(v).format())
+    else if v == ''
+      @set('endDate', undefined)
+
+    current = @get('startDate')
+    if moment(current).isValid()
+      moment(current).format('L')
+    else
+      ""
+  ).property('startDate', 'humanStart')
+
+  humanEnd: ( (k,v) ->
+    if v and moment(v).isValid()
+      @set('endDate', moment(v).format())
+    else if v == ''
+      @set('endDate', undefined)
+
+    current = @get('endDate')
+    if moment(current).isValid()
+      moment(current).format('L')
+    else
+      ""
+  ).property('endDate', 'humanEnd')
+
+  dateRange: ( ->
+    active = @get('active')
+    start = @get('startDate')
+    end = @get('endDate')
+    if start or end
+      sDisplay = if start then "From: #{@get('humanStart')}" else ""
+      eDisplay = if end then "Until: #{@get('humanEnd')}" else ""
+      aDisplay = if active then "(active)" else "(inactive)"
+      "#{sDisplay} #{eDisplay} #{aDisplay}"
+    else
+      'Always Displayed'
+  ).property('startDate', 'endDate', 'active')
 
   parent: ( (key, value)->
     if arguments.length > 1

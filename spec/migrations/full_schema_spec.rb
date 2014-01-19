@@ -45,6 +45,8 @@ describe "full schema spec" do
         t.column :order, :integer
         t.column :title, :string
         t.column :body, :text
+        t.column :start_date, :date
+        t.column :end_date, :date
         t.column :created_at, :datetime
         t.column :updated_at, :datetime
         t.index :app_id, name: 'index_pages_on_app_id'

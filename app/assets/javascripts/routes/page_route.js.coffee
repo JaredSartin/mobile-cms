@@ -8,8 +8,9 @@ App.PagesNewRoute = Ember.Route.extend
         # EMBERRRRR! https://github.com/emberjs/data/issues/1308 
         # Sneak our saved/updated machine object into the Location's machine list:  (croz and jared 2013-12-04)
         @Flash.set('success', "Page created! Don't forget to assign it.")
-        @modelFor('app').get('pages').pushObject(page)
-        @controller.transitionToRoute 'app.dashboard', @modelFor('app')
+        @modelFor('app').get('pages').then (ps) =>
+          ps.pushObject(page)
+          @controller.transitionToRoute 'app.dashboard', @modelFor('app')
       , =>
     cancel: ->
       @controller.transitionToRoute 'app.dashboard', @modelFor('app')

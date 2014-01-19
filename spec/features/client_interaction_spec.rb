@@ -67,6 +67,8 @@ feature 'Client viewing the app' do
     page.should have_content "Oops! There seems to be a problem"
   end
 
+  scenario 'sees scheduled pages properly'
+
   scenario 'sees a coming soon page when no homepage is set'
   scenario 'sees an app listing on the main url when access by custom url and no apps at root'
 end

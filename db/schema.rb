@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140117235645) do
+ActiveRecord::Schema.define(version: 20140118005137) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -72,6 +72,8 @@ ActiveRecord::Schema.define(version: 20140117235645) do
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "start_date"
+    t.date     "end_date"
   end
 
   add_index "pages", ["app_id"], name: "index_pages_on_app_id", using: :btree
