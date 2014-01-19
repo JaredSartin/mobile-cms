@@ -13,7 +13,7 @@ App.Page = DS.Model.extend
     if v and moment(v).isValid()
       @set('startDate', moment(v).format())
     else if v == ''
-      @set('endDate', undefined)
+      @set('startDate', '')
 
     current = @get('startDate')
     if moment(current).isValid()
@@ -26,7 +26,7 @@ App.Page = DS.Model.extend
     if v and moment(v).isValid()
       @set('endDate', moment(v).format())
     else if v == ''
-      @set('endDate', undefined)
+      @set('endDate', '')
 
     current = @get('endDate')
     if moment(current).isValid()

@@ -210,6 +210,7 @@ feature 'Page Management' do
     end
   end
 
+  scenario 'page dates can be removed'
   scenario 'page creation can show errors'
   scenario 'images can be uploaded to pages'
 end
