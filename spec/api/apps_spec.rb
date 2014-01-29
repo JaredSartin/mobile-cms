@@ -124,7 +124,7 @@ describe "App API", type: :api do
       it "returns errors if you cannot create an app"
     end
 
-    describe "updating the app icon" do
+    describe "uploading the app icon" do
       it 'updates the icon' do
         sign_in_as amy
 
@@ -144,6 +144,26 @@ describe "App API", type: :api do
         end
       end
 
+      it 'gives errors on update'
+      it 'gives errors when not allowed to change icon'
+      it 'gives not found when wrong app id'
+    end
+    describe "uploading the app theme" do
+      it 'updates the theme' do
+        sign_in_as amy
+
+        app_model.theme_choice.should == "Default"
+
+        file_path = Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/booty.css'), 'text/css')
+        post theme_api_app_path(app_model), theme: file_path
+
+        last_response.status.should == 200
+
+        app_json = get_json_object("app")
+        app_json["theme_choice"].should == "Custom"
+
+        app_model.reload.theme_choice.should == "Custom"
+      end
       it 'gives errors on update'
       it 'gives errors when not allowed to change icon'
       it 'gives not found when wrong app id'

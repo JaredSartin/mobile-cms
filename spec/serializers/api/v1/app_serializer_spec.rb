@@ -19,6 +19,7 @@ describe Api::V1::AppSerializer do
                                   apple_large_icon: app.icon.url(:apple_large),
                                   android_icon: app.icon.url(:android),
                                   ga_key: app.ga_key,
+                                  theme_choice: app.theme_choice,
                                   links: {
                                     pages: "/api/apps/#{app.id}/pages"
                                   }

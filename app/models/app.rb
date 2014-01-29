@@ -19,7 +19,11 @@ class App < ActiveRecord::Base
       apple_large: "-background white -flatten",
     },
   }
+
+  has_attached_file :theme
+
   validates_attachment :icon, {size: {in: 0..2.megabytes}}
+  validates_attachment :theme, {size: {in: 0..1.megabytes}}
 
   validates :name, :shortname, :user, presence: true
   validates :shortname, uniqueness: true

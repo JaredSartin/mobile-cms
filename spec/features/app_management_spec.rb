@@ -47,9 +47,42 @@ feature 'App Management' do
     end
   end
 
+  scenario 'an app can get custom bootstrap files uploaded'
+  scenario 'an app can get different themes' do
+    hope = Fabricate(:app, user: amy, name: "Hope")
+    sign_in_as amy
+
+    visit client_app(hope)
+    page.find("#theme", visible: false)['href'].should =~ /default/
+
+    #set style
+    visit_admin_app(hope)
+    page.find('.app-edit-app').click
+
+    select "Amelia", from: "Theme"
+    page.find('.app-save').click
+    sleep 1
+
+    visit client_app(hope)
+    page.find("#theme", visible: false)['href'].should =~ /amelia/
+
+    #upload new theme
+    visit_admin_app(hope)
+    page.find('.app-edit-app').click
+
+    path = File.join(::Rails.root, "spec/fixtures/booty.css") 
+    attach_file('app-theme-upload', path)
+
+    patiently do
+      page.should have_content "Theme has been updated!"
+    end
+
+    visit client_app(hope)
+    page.find("#theme", visible: false)['href'].should =~ /booty/
+  end
+
   scenario 'only pngs and gifs can be uploaded'
   scenario 'an app can be created'
-  scenario 'an app can get custom colors and style set'
   scenario 'an app can be deleted?'
   scenario 'users can be added as managers'
   scenario 'users can be removed as managers'

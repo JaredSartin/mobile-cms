@@ -4,6 +4,11 @@
     %title Publicizr
     = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "application"
+    - if @app
+      - if @app.theme_choice == 'Custom'
+        = stylesheet_link_tag @app.theme.url(:original), media: "all", id: "theme"
+      - else
+        = stylesheet_link_tag "bootstrap_themes/#{@app.theme_choice.downcase}", media: "all", id: "theme"
     - if user_signed_in?
       %meta{name: 'current-user-id', content: current_user.id}
     %meta{name:"mobile-web-app-capable", content:"yes"}

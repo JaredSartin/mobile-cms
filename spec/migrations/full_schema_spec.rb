@@ -30,6 +30,11 @@ describe "full schema spec" do
         t.column :icon_file_name, :string
         t.column :icon_file_size, :integer
         t.column :icon_updated_at, :datetime
+        t.column :theme_choice, :string, default: 'Default'
+        t.column :theme_content_type, :string
+        t.column :theme_file_name, :string
+        t.column :theme_file_size, :integer
+        t.column :theme_updated_at, :datetime
         # URL, app urls, color scheme, font?
         # client type? page limit? pay flag?
         t.column :created_at, :datetime

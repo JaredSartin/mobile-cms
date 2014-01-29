@@ -11,3 +11,10 @@ App.App = DS.Model.extend
   appleMediumIcon: DS.attr 'string'
   appleLargeIcon: DS.attr 'string'
   androidIcon: DS.attr 'string'
+  themeChoice: DS.attr 'string'
+
+  validThemes: [
+    "Default", "Custom", "Amelia", "Cerulean", "Cosmo", "Cyborg",
+    "Flatly", "Journey", "Readable", "Simplex", "Slate",
+    "Spacelab", "United", "Yeti"
+  ]

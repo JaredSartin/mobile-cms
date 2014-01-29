@@ -45,9 +45,15 @@ module Api
         end
       end
 
+      def theme
+        if @app.update_attributes(theme: params[:theme], theme_choice: "Custom")
+          render json: @app, serializer: AppSerializer
+        end
+      end
+
       private
       def app_params
-        params.require(:app).permit(:name, :cname, :shortname, :homepage_id, :ga_key)
+        params.require(:app).permit(:name, :cname, :shortname, :homepage_id, :ga_key, :theme_choice)
       end
     end
   end

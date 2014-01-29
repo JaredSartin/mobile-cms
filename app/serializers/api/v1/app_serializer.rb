@@ -3,7 +3,7 @@ module Api
     class AppSerializer < ActiveModel::Serializer
       attributes :id, :user_id, :homepage_id, :name, :cname, :shortname,
         :apple_smallest_icon, :apple_small_icon, :apple_medium_icon,
-        :apple_large_icon, :android_icon, :ga_key, :links
+        :apple_large_icon, :android_icon, :ga_key, :theme_choice, :links
 
       ICON_TYPES = [:apple_smallest, :apple_small, :apple_medium, :apple_large, :android]
       ICON_TYPES.each do |type|

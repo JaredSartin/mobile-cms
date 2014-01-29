@@ -16,4 +16,10 @@ describe App do
         .allowing('image/png', 'image/gif')
   }
   it { should validate_attachment_size(:icon).less_than(2.megabytes) }
+
+  it { should have_attached_file(:theme) }
+  it { should validate_attachment_content_type(:theme)
+        .allowing('text/css')
+  }
+  it { should validate_attachment_size(:theme).less_than(1.megabytes) }
 end

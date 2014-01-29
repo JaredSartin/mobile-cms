@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140118005137) do
+ActiveRecord::Schema.define(version: 20140127025543) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -59,6 +59,11 @@ ActiveRecord::Schema.define(version: 20140118005137) do
     t.integer  "icon_file_size"
     t.datetime "icon_updated_at"
     t.string   "ga_key"
+    t.string   "theme_choice",       default: "Default"
+    t.string   "theme_content_type"
+    t.string   "theme_file_name"
+    t.integer  "theme_file_size"
+    t.datetime "theme_updated_at"
   end
 
   add_index "apps", ["cname"], name: "index_apps_on_cname", using: :btree
