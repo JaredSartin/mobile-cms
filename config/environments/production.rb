@@ -59,7 +59,11 @@ MobileCms::Application.configure do
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-  # config.assets.precompile += %w( search.js )
+  %w( default amelia cerulean cosmo cyborg flatly journal readable
+    simplex slate spacelab united yeti ).each do |theme|
+    config.assets.precompile += ["bootstrap_themes/#{theme}.css"]
+  end
+  # config.assets.precompile += %w( )
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
