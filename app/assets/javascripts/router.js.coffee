@@ -1,3 +1,8 @@
+Ember.Route.reopen
+  render: (controller, model) ->
+    @_super()
+    window.scrollTo 0, 0
+
 App.Router.reopen
   location: 'history'
 
