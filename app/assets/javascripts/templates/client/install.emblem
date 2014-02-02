@@ -1,0 +1,30 @@
+.row
+  .col-md-12
+    linkTo 'client.homepage' class="app-back btn btn-default btn-xs pull-left"  | &larr; Home
+h4 Add to Home Screen
+#accordion.panel-group
+  .panel.panel-default
+    .panel-heading
+      h4.panel-title
+        a data-parent="#accordion" data-toggle="collapse" href="#ios"
+          | iOS
+    #ios.panel-collapse.collapse
+      .panel-body
+         p 
+           | To create a shortcut for this app on your Home Screen,
+           | please open the site in Mobile Safari then tap 
+           img alt="" height=14 src="http://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/1Tips-icons/II062-share_icon_2x.png" width="10"
+           | , then tap 
+           strong Add to Home Screen.
+  .panel.panel-default
+    .panel-heading
+      h4.panel-title
+        a data-parent="#accordion" data-toggle="collapse" href="#android"
+          | Android
+    #android.panel-collapse.collapse
+      .panel-body
+         p 
+           | To create a shortcut for this app on your Home Screen, 
+           | Please visit this app from Google Chrome, open the menu 
+           | and choose 
+           strong Add to home screen.

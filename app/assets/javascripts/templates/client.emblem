@@ -1,10 +1,15 @@
 nav.navbar.navbar-fixed-top.navbar-default.centered
   .navbar-header
-    button.navbar-toggle.pull-left data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button"
-      span.sr-only Toggle navigation
-      span.icon-bar
-      span.icon-bar
-      span.icon-bar
+    unless isStandalone
+      button.app-expander.navbar-toggle.pull-left data-target="#install-bar" data-toggle="collapse" type="button"
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
     linkTo 'client.homepage' class="navbar-brand" | #{name}
+  .collapse.navbar-collapse#install-bar
+    ul.nav.navbar-nav.visible-xs
+      li
+        link-to 'client.install' | Install
 .container
   outlet
