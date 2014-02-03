@@ -2,11 +2,11 @@
   unless active
     if dateRange
       .alert.alert-warning This page is not visible. Only visible #{dateRange}
+  if parent
+    .row
+      .col-md-12
+        linkTo 'client.page' parent class="app-back btn btn-default btn-xs pull-left"  | &larr; Back
   h3.text-center
-    if parent
-      .row
-        .col-md-12
-          linkTo 'client.page' parent class="app-back btn btn-default btn-xs pull-left"  | &larr; Back
     | #{title}
   == body
   hr.visible-xs
