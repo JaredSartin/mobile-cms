@@ -10,7 +10,7 @@
     | #{title}
   == body
   hr.visible-xs
-  br
+br.visible-xs
 .col-sm-3
   if children
     ul.nav.nav-pills.nav-stacked.side-nav
