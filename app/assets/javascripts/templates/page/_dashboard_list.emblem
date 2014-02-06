@@ -1,8 +1,8 @@
-li class="app-page-{{unbound id}} app-page page-preview" data-id="{{unbound id}}"
+with view.page
   span
     =title
     linkTo 'page.edit' this class="app-edit-page pull-right edit-page" | Edit
     i.date-display.pull-right=dateRange
   ul.app-child-pages.app-pages.page-list.child-pages class="app-page-{{unbound id}}-children"
     each sortedChildren
-      partial 'page/dashboard_list'
+      App.PageListingView page=this

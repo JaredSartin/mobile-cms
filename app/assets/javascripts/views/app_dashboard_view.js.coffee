@@ -1,44 +1,12 @@
 App.AppDashboardView = Ember.View.extend
   didInsertElement: ->
     @_super()
-    @setSortable()
+    App.Sortable.init(@$('.app-homepage, .app-unassigned-pages'), @get('controller'))
 
   willDestroyElement: ->
-    @$('.app-homepage, .app-unassigned-pages, .app-child-pages').sortable('destroy')
-
-  setSortable: (->
-    Ember.run.debounce @, =>
-      controller = @get('controller')
-      @$('.app-homepage, .app-unassigned-pages, .app-child-pages').sortable(
-        connectWith: '.app-pages'
-        placeholder: 'page-drag-placeholder'
-        dropOnEmpty: true
-        helper: "clone"
-        opacity: 0.5
-        tolerance: "pointer"
-        start: (e, ui) =>
-          ui.item.show()
-        stop: (e, ui) =>
-          indexes = {}
-          indexes.homepage = @_getPages('.app-homepage')
-          indexes.unassigned = @_getPages('.app-unassigned-pages')
-          for pageList in @$('.app-child-pages')
-            $pageList = $(pageList)
-            parentId = $pageList.parent().data('id')
-            indexes[parentId] = @_getPages($pageList)
-          sort_id = ui.item.data('id')
-          $('.app-pages').sortable('cancel')
-          controller.changePageOrder sort_id, indexes
-      )
-    , 300
-  ).observes('controller.pages.@each.isLoaded')
-
-  _getPages: (sel) ->
-    #thinks sel is not a sortable?
     @$('.app-homepage, .app-unassigned-pages, .app-child-pages').sortable(
       connectWith: '.app-pages'
       placeholder: 'page-drag-placeholder'
       dropOnEmpty: true
     )
-    #######
-    @$(sel).sortable('toArray', attribute: 'data-id').filter (a) -> a
+    @$('.app-homepage, .app-unassigned-pages, .app-child-pages').sortable('destroy')
