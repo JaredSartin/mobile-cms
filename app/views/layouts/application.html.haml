@@ -1,7 +1,6 @@
 !!!
 %html
   %head
-    %title Publicizr
     = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "application"
     - if user_signed_in?
@@ -10,6 +9,7 @@
     %meta{name:"apple-mobile-web-app-capable", content:"yes"}
     %meta{name:"viewport", content:"width=320, initial-scale=1.0, user-scalable=no"}
     - if @app
+      %title=@app.shortname
       %meta{name:"apple-mobile-web-app-title", content:@app.shortname}
       - if @app.theme_choice == 'Custom'
         = stylesheet_link_tag @app.theme.url(:original), media: "all", id: "theme"
@@ -21,6 +21,7 @@
       %link#app-apple-icon-large{href: @app.icon.url(:apple_large), rel: "apple-touch-icon", sizes: "152x152"}
       %link#app-android-icon{href: @app.icon.url(:android), rel: "shortcut icon", sizes: "196x196"}
     - else
+      %title Publicizr
       %link#app-apple-icon-smallest{href: "/assets/icons/placeholder/apple_smallest/icon.png", rel: "apple-touch-icon"}
       %link#app-apple-icon-small{href: "/assets/icons/placeholder/apple_small/icon.png", rel: "apple-touch-icon", sizes: "76x76"}
       %link#app-apple-icon-medium{href: "/assets/icons/placeholder/apple_medium/icon.png", rel: "apple-touch-icon", sizes: "120x120"}
