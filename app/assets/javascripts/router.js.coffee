@@ -3,8 +3,9 @@ Ember.Route.reopen
     @_super()
     window.scrollTo 0, 0
 
-App.Router.reopen
-  location: 'history'
+if (window.history && window.history.pushState)
+  App.Router.reopen
+    location: 'history'
 
 App.Router.map ()->
   # @resource('dashboard', path: '/')
